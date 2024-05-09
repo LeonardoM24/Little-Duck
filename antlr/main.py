@@ -18,10 +18,13 @@ from Grammar_duckParser import Grammar_duckParser
 # o el contenido del archivo que se leyo con exito
 def readFile(path):
     fileContent = "" # variable que guardara el contenido del archivo
+    if not path.endswith('.txt'):
+        return {"status":"ERROR", "content": "Must be a .txt file"}
+    
     try:
         with open(path, "r") as file: # abrimos el archivo en modo lectura
             fileContent = file.read() # leemos el archivo para guardarlo en la variable
-        return {"status":"OK", "content": fileContent} # se leyo con exito
+        return {"status":"OK", "content": fileContent}  # se leyo con exito
     except FileNotFoundError:
         return {"status":"ERROR", "content": "ERROR: File not found."} # no se encontro el archivo
     except Exception as e:
