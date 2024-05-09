@@ -39,17 +39,16 @@ if __name__ == '__main__': # programa main
 
     file = readFile(input_path) 
 
-    if file["status"] == "OK":
-        print(file)
-    else:
+    if file["status"] == "ERROR":
         print(file["content"])
-    
-    # lexer = Grammar_duckLexer(InputStream(file)) # pasamos el doc por el lexer
-    # stream = CommonTokenStream(lexer) # pasamos el resultado del lexer al stream
-    # parser = Grammar_duckParser(stream) # pasamos el stram al parser
+    elif file["status"] == "OK":
 
-    # tree = parser.prog()
+        lexer = Grammar_duckLexer(InputStream(file)) # pasamos el doc por el lexer
+        stream = CommonTokenStream(lexer) # pasamos el resultado del lexer al stream
+        parser = Grammar_duckParser(stream) # pasamos el stram al parser
 
-    # print(tree.toStringTree(recog=parser))
+        tree = parser.prog()
+
+        print(tree.toStringTree(recog=parser))
 
 
