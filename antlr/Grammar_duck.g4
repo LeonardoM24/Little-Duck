@@ -7,12 +7,12 @@ a_funcs : (funcs a_funcs)?;
 vars      : 'var' list_vars;
 list_vars : ID list_id ':' type ';' more_vars;
 more_vars : (ID list_id ':' type ';' more_vars)?;
-list_id   : (',' ID)?;
+list_id   : (',' ID list_id)?;
 
 type : 'int' | 'float';
 
 body           : '{' list_statement '}';
-list_statement : (statement list_statement)?;
+list_statement : (statement)*;
 
 statement   : assign
             | condition
@@ -20,12 +20,12 @@ statement   : assign
             | f_call
             | print;
 
-print           : 'print(' list_expresion ')';
+print           : 'print(' list_expresion ')' ';' ;
 list_expresion  : exp_o_string
                 | exp_o_string ',' list_expresion;
 exp_o_string    : expresion | CTE_STRING;
 
-assign : 'id' '=' expresion';';
+assign : ID '=' expresion';';
 
 cycle : 'do' body 'while' expresion ';';
 
@@ -54,12 +54,12 @@ cte: CTE_INT | CTE_FLOAT;
 
 
 funcs       : 'void' ID '(' list_params ')' '[' var_no_var body ']' ';';
-list_params : (ID ':' type) | more_params;
+list_params : ((ID ':' type) more_params)?;
 more_params : (',' ID ':' type more_params)?;
 var_no_var  : (vars)?;
 
-f_call           : ID '('  ')';
-f_list_expresion : (expresion)?;
+f_call           : ID '(' f_list_expresion ')' ';';
+f_list_expresion : (expresion f_more_expresion)?;
 f_more_expresion : (',' expresion f_more_expresion)?;
 
 

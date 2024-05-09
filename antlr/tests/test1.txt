@@ -1,7 +1,6 @@
 program Test1 ;
 
 var id1, ID_2, iD__3 : int ;
-var Id4 : float ;
 
 void func1 () [
     { }
@@ -12,9 +11,26 @@ void func_2 ( f_id_1 : int, fiD02:float)[
     var f_var_1 : int ;
     {
         id1 = (ID_2 + iD__3) * 43.24 - 4212 ;
-        f_var_1 = 2333
+        f_var_1 = 2333 ;
         if ( f_var_1 != (2 + id1) ) {
-            
-        }        
+            x = 3 ;
+        } 
+        else {
+            x = 2 ;
+        };
+
+        do{
+            iD__3 = iD__3 + 1 ;
+        }while( iD__3 < 4 );   
+
+        print('Hola 7&76&&-', Id4);
+
+        func1();  
+        func1(2,Id4);  
     }
 ];
+
+main{
+    y = 3 + 4;
+}
+end
