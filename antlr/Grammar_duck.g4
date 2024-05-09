@@ -60,17 +60,12 @@ var_no_var  : (vars)?;
 
 f_call           : ID '('  ')';
 f_list_expresion : (expresion)?;
-f_more_expresion : ;
-
-
-
-
+f_more_expresion : (',' expresion f_more_expresion)?;
 
 
 // TOKENS
 
 SKIPS : [ \r\t\n]+ -> skip ; // skip -->  espacios, enters y tabs
-
 
 ID         : [a-zA-Z][A-Za-z0-9_]* ;
 CTE_INT    : [0-9]+ ;
