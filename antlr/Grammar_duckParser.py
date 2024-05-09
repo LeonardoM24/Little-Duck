@@ -111,7 +111,7 @@ class Grammar_duckParser ( Parser ):
 
     literalNames = [ "<INVALID>", "'program'", "';'", "'main'", "'end'", 
                      "'var'", "':'", "','", "'int'", "'float'", "'{'", "'}'", 
-                     "'print('", "')'", "'id'", "'='", "'while'", "'do'", 
+                     "'print('", "')'", "'id'", "'='", "'do'", "'while'", 
                      "'if'", "'else'", "'<'", "'>'", "'!='", "'+'", "'-'", 
                      "'*'", "'/'", "'('", "'void'", "'['", "']'" ]
 

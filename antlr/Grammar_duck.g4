@@ -27,7 +27,7 @@ exp_o_string    : expresion | CTE_STRING;
 
 assign : 'id' '=' expresion';';
 
-cycle : 'while' body 'do' expresion ';';
+cycle : 'do' body 'while' expresion ';';
 
 condition : 'if' expresion body else';';
 else      : ('else' body)?;

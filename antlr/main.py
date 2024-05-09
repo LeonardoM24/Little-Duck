@@ -1,15 +1,10 @@
 # Leonardo Mojica Amezquita A0057196
 
-
-import os # se usa os para revisar el path
-
 # imports con lo necesario para 
 # antlr4 y la gramatica
 from antlr4 import *
 from Grammar_duckLexer import Grammar_duckLexer
 from Grammar_duckParser import Grammar_duckParser
-
-
 
 
 # Funcion para leer el archivo
@@ -41,14 +36,12 @@ if __name__ == '__main__': # programa main
 
     if file["status"] == "ERROR":
         print(file["content"])
-    elif file["status"] == "OK":
-
-        lexer = Grammar_duckLexer(InputStream(file)) # pasamos el doc por el lexer
+    elif file["status"] == "OK":    
+        content = file["content"]
+        lexer = Grammar_duckLexer(InputStream(content)) # pasamos el doc por el lexer
         stream = CommonTokenStream(lexer) # pasamos el resultado del lexer al stream
         parser = Grammar_duckParser(stream) # pasamos el stram al parser
 
         tree = parser.prog()
 
         print(tree.toStringTree(recog=parser))
-
-
