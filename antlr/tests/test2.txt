@@ -1,0 +1,7 @@
+program Test2 ;
+
+
+main{
+    y = 3 + 4;
+}
+end

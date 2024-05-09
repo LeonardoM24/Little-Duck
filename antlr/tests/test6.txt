@@ -1,0 +1,8 @@
+program Test6 ;
+
+var id1, ID_2, iD__3 : int ;
+
+main{
+    print('"hola"');
+}
+end

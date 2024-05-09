@@ -1,0 +1,15 @@
+program Test4 ;
+
+var id1, ID_2, iD__3 : int ;
+
+void func_2 ( f_id_1 : int, fiD02:float)[
+    var f_var_1 : int ;
+    {
+        polas$$ = 3 ;
+    }
+];
+
+main{
+    y = 3 + 4;
+}
+end
