@@ -5,6 +5,13 @@ if "." in __name__:
 else:
     from Grammar_duckParser import Grammar_duckParser
 
+import sys
+sys.path.insert(0, './Semantica.py') 
+from Semantica import DirectorioFunciones
+global DF
+DF = DirectorioFunciones()
+
+
 # This class defines a complete listener for a parse tree produced by Grammar_duckParser.
 class Grammar_duckListener(ParseTreeListener):
 
@@ -14,15 +21,6 @@ class Grammar_duckListener(ParseTreeListener):
 
     # Exit a parse tree produced by Grammar_duckParser#prog.
     def exitProg(self, ctx:Grammar_duckParser.ProgContext):
-        pass
-
-
-    # Enter a parse tree produced by Grammar_duckParser#a_vars.
-    def enterA_vars(self, ctx:Grammar_duckParser.A_varsContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#a_vars.
-    def exitA_vars(self, ctx:Grammar_duckParser.A_varsContext):
         pass
 
 
@@ -44,15 +42,6 @@ class Grammar_duckListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by Grammar_duckParser#list_vars.
-    def enterList_vars(self, ctx:Grammar_duckParser.List_varsContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#list_vars.
-    def exitList_vars(self, ctx:Grammar_duckParser.List_varsContext):
-        pass
-
-
     # Enter a parse tree produced by Grammar_duckParser#more_vars.
     def enterMore_vars(self, ctx:Grammar_duckParser.More_varsContext):
         pass
@@ -68,15 +57,6 @@ class Grammar_duckListener(ParseTreeListener):
 
     # Exit a parse tree produced by Grammar_duckParser#list_id.
     def exitList_id(self, ctx:Grammar_duckParser.List_idContext):
-        pass
-
-
-    # Enter a parse tree produced by Grammar_duckParser#type.
-    def enterType(self, ctx:Grammar_duckParser.TypeContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#type.
-    def exitType(self, ctx:Grammar_duckParser.TypeContext):
         pass
 
 
@@ -296,21 +276,21 @@ class Grammar_duckListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by Grammar_duckParser#params.
+    def enterParams(self, ctx:Grammar_duckParser.ParamsContext):
+        pass
+
+    # Exit a parse tree produced by Grammar_duckParser#params.
+    def exitParams(self, ctx:Grammar_duckParser.ParamsContext):
+        pass
+
+
     # Enter a parse tree produced by Grammar_duckParser#list_params.
     def enterList_params(self, ctx:Grammar_duckParser.List_paramsContext):
         pass
 
     # Exit a parse tree produced by Grammar_duckParser#list_params.
     def exitList_params(self, ctx:Grammar_duckParser.List_paramsContext):
-        pass
-
-
-    # Enter a parse tree produced by Grammar_duckParser#more_params.
-    def enterMore_params(self, ctx:Grammar_duckParser.More_paramsContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#more_params.
-    def exitMore_params(self, ctx:Grammar_duckParser.More_paramsContext):
         pass
 
 

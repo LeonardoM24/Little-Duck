@@ -1,6 +1,7 @@
 //antlr4-parse Expr.g4 prog -gui PARA VER EL ARBOL COMO UI
 //antlr4-parse Expr.g4 prog -tree CONSEGUIMOS EL PARSER EN UN TREE
 //antlr4-parse Expr.g4 prog -tokens -trace PARA VER COMO SE CONSIGUEN LOS TOKENS Y TRACE POR EL PROCESO
+//antlr4 -Dlanguage=Python3 Grammar.g4
 
 grammar Expr;		
 prog:	expr EOF ;

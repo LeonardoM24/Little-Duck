@@ -7,6 +7,7 @@ from Grammar_duckLexer import Grammar_duckLexer
 from Grammar_duckParser import Grammar_duckParser
 
 
+
 # Funcion para leer el archivo
 # regresa un dict con status que puede ser OK (todo salio bien)
 # o ERROR, ademas regresa "content" que tiene el contenido del error
@@ -43,5 +44,5 @@ if __name__ == '__main__': # programa main
         parser = Grammar_duckParser(stream) # pasamos el stram al parser
 
         tree = parser.prog()
-
+        
         print(tree.toStringTree(recog=parser))

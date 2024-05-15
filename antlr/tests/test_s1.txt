@@ -1,0 +1,19 @@
+program Test_s1 ;
+
+var x,y : int ;
+
+
+void func(x : int)[
+    var g : float
+    {}
+];
+
+void C(x : int)[
+    var g : float
+    {}
+];
+
+main{
+    y = 3 + 4;
+}
+end
