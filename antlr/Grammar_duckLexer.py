@@ -10,9 +10,9 @@ else:
 
 import sys
 sys.path.insert(0, './Semantica.py') 
-from Semantica import DirectorioFunciones
+from Semantica import Semantica
 global DF
-DF = DirectorioFunciones()
+DF = Semantica()
 
 
 def serializedATN():

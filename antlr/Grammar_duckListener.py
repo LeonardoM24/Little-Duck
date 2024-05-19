@@ -7,9 +7,9 @@ else:
 
 import sys
 sys.path.insert(0, './Semantica.py') 
-from Semantica import DirectorioFunciones
+from Semantica import Semantica
 global DF
-DF = DirectorioFunciones()
+DF = Semantica()
 
 
 # This class defines a complete listener for a parse tree produced by Grammar_duckParser.

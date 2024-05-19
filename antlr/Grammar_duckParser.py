@@ -11,9 +11,9 @@ else:
 
 import sys
 sys.path.insert(0, './Semantica.py') 
-from Semantica import DirectorioFunciones
+from Semantica import Semantica
 global DF
-DF = DirectorioFunciones()
+DF = Semantica()
 
 def serializedATN():
     return [
@@ -275,6 +275,7 @@ class Grammar_duckParser ( Parser ):
             try:
                 DF.addFunc((None if localctx._ID is None else localctx._ID.text), DF.currType) 
                 DF.currFunc = (None if localctx._ID is None else localctx._ID.text)
+                DF.progName = (None if localctx._ID is None else localctx._ID.text)
             except ValueError as e: 
                 print(e)
                 sys.exit()
