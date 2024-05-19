@@ -973,12 +973,17 @@ class Grammar_duckParser ( Parser ):
             self.state = 147
             self.match(Grammar_duckParser.T__1)
 
-            op = semantica.pilaOperadores.pop() # debe ser un 7 "="
-            opD = semantica.pilaVariables.pop() # operando derecho 
-            opI = semantica.pilaVariables.pop() # operando izquierdo
+            op  = semantica.pilaOperadores.pop() # debe ser un 7 "="
+            opD = semantica.pilaVariables.pop()  # operando derecho 
+            opI = semantica.pilaVariables.pop()  # operando izquierdo
+            TD  = semantica.pilaTipos.pop()      # tipo del operando derecho
+            TI  = semantica.pilaTipos.pop()      # tipo del operando izquierdo
             try:
-                semantica.addCuadruplo(op,opI,opD)
+                semantica.addCuadruplo(op,opI,opD,TI,TD)
             except MemoryError() as e:
+                print(e)
+                sys.exit()
+            except ValueError as e2:
                 print(e)
                 sys.exit()
 
@@ -1250,12 +1255,17 @@ class Grammar_duckParser ( Parser ):
             self.exp()
 
             # terminar la comparacion
-            op = semantica.pilaOperadores.pop() # debe ser un 4,5 o 6
+            op  = semantica.pilaOperadores.pop() # debe ser un 4,5 o 6
             opD = semantica.pilaVariables.pop()
             opI = semantica.pilaVariables.pop()
+            TD  = semantica.pilaTipos.pop()
+            TI  = semantica.pilaTipos.pop()
             try:
-                semantica.addCuadruplo(op,opI,opD)
+                semantica.addCuadruplo(op,opI,opD,TI,TD)
             except MemoryError() as e:
+                print(e)
+                sys.exit()
+            except ValueError as e2:
                 print(e)
                 sys.exit()
 
@@ -1377,10 +1387,15 @@ class Grammar_duckParser ( Parser ):
                 op = semantica.pilaOperadores.pop()
                 opD = semantica.pilaVariables.pop()
                 opI = semantica.pilaVariables.pop()
+                TD = semantica.pilaTipos.pop()
+                TI = semantica.pilaTipos.pop()
                 try:
-                    semantica.addCuadruplo(op,opI,opD)
+                    semantica.addCuadruplo(op,opI,opD,TI,TD)
                 except MemoryError() as e:
                     print(e)
+                    sys.exit()
+                except VelueError() as e2:
+                    print(e2)
                     sys.exit()
 
             self.state = 190
@@ -1396,10 +1411,15 @@ class Grammar_duckParser ( Parser ):
                     op = semantica.pilaOperadores.pop()
                     opD = semantica.pilaVariables.pop()
                     opI = semantica.pilaVariables.pop()
+                    TD = semantica.pilaTipos.pop()
+                    TI = semantica.pilaTipos.pop()
                     try:
-                        semantica.addCuadruplo(op,opI,opD)
+                        semantica.addCuadruplo(op,opI,opD,TI,TD)
                     except MemoryError() as e:
                         print(e)
+                        sys.exit()
+                    except VelueError() as e2:
+                        print(e2)
                         sys.exit()
 
                 self.state = 192
@@ -1583,9 +1603,14 @@ class Grammar_duckParser ( Parser ):
                 op = semantica.pilaOperadores.pop()
                 opD = semantica.pilaVariables.pop()
                 opI = semantica.pilaVariables.pop()
+                TD  = semantica.pilaTipos.pop()
+                TI  = semantica.pilaTipos.pop()
                 try:
-                    semantica.addCuadruplo(op,opI,opD)
+                    semantica.addCuadruplo(op,opI,opD,TI,TD)
                 except MemoryError() as e:
+                    print(e)
+                    sys.exit()
+                except ValueError as e2:
                     print(e)
                     sys.exit()
 
@@ -1602,9 +1627,14 @@ class Grammar_duckParser ( Parser ):
                     op = semantica.pilaOperadores.pop()
                     opD = semantica.pilaVariables.pop()
                     opI = semantica.pilaVariables.pop()
+                    TD  = semantica.pilaTipos.pop()
+                    TI  = semantica.pilaTipos.pop()
                     try:
-                        semantica.addCuadruplo(op,opI,opD)
+                        semantica.addCuadruplo(op,opI,opD,TI,TD)
                     except MemoryError() as e:
+                        print(e)
+                        sys.exit()
+                    except ValueError as e2:
                         print(e)
                         sys.exit()
 
@@ -1738,12 +1768,17 @@ class Grammar_duckParser ( Parser ):
                 self.state = 232
                 self.id_cte()
 
-                op = semantica.pilaOperadores.pop() # tiene que ser un *
+                op  = semantica.pilaOperadores.pop() # tiene que ser un *
                 opD = semantica.pilaVariables.pop() # variable o cte
                 opI = semantica.pilaVariables.pop() # -1
+                TD  = semantica.pilaTipos.pop()
+                TI  = semantica.pilaTipos.pop()
                 try:
-                    semantica.addCuadruplo(op,opI,opD) # *, -1, var, temp = -var
+                    semantica.addCuadruplo(op,opI,opD,TI,TD) # *, -1, var, temp = -var
                 except MemoryError() as e:
+                    print(e)
+                    sys.exit()
+                except ValueError as e2:
                     print(e)
                     sys.exit()
 

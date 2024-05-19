@@ -7,6 +7,7 @@ class Semantica:
         # 0 = float, 1 = int
         # 0 = + , 1 = -, 2 = *, 3 = /, 4 = <, 5 = >, 6 = !=, 7 = =
         # ejemplo cubo[0][1][2] = float, int, multiplicacion
+        self.tiposTag = ["float", "int", "string"]
         self.cuboSemantico = [[],[],[]]
         # Inicializar el cubo semántico
         self.cuboSemantico = [[[0 for _ in range(8)] for _ in range(2)] for _ in range(2)]
@@ -44,22 +45,23 @@ class Semantica:
         self.currType = "" # tipo de la variable actual
 
         # ==========direcciones de memoria ===========
-        self.rangoMGlobal = 12999 # valor maximo variable global
-        self.rangoMLocal  = 18999 # valor maximo variable local
-        self.rangoMTemp   = 30999 # valor maximo variable temporal
-        self.rangoMCte    = 39999 # valor maximo para constantes
+        self.rangoMGlobalI = 6499; self.rangoMGlobalF = 12999  # valor maximo variable global
+        self.rangoMLocalI  = 15999; self.rangoMLocalF = 18999 # valor maximo variable local
+        self.rangoMTempI   = 30999; self.rangoMTempF = 30999 # valor maximo variable temporal
+        self.rangoMCteI    = 36999; self.rangoMCteF = 42999; self.rangoMCteS = 48999 # valor maximo para constantes
 
-        self.currMGlobal = 1000
-        self.currMLocal  = 13000
-        self.currMTemp   = 19000
-        self.currMCte    = 31000
+        self.currMGlobalI = 1000; self.currMGlobalF = 6500
+        self.currMLocalI  = 13000; self.currMLocalF = 16000
+        self.currMTempI   = 19000; self.currMTempF = 25000
+        self.currMCteI    = 31000; self.currMCteF = 37000; self.currMCteS = 43000
 
 
         # ==========Pilas, operaciones============
-        self.currCuadruplo = 0 # indice del siguiente cuadruplo
-        self.cuadruplos    = [] # arreglo de cuadruplos
-        self.pilaSaltos    = [] # pila de los saltos
-        self.pilaVariables = [] # pila con las direcciones de memoria de varibles
+        self.currCuadruplo  = 0 # indice del siguiente cuadruplo
+        self.cuadruplos     = [] # arreglo de cuadruplos
+        self.pilaTipos      = [] # pila con los tipos
+        self.pilaSaltos     = [] # pila de los saltos
+        self.pilaVariables  = [] # pila con las direcciones de memoria de varibles
         self.pilaOperadores = [] # pila con operadores
         self.convertirMenos = False # en casos como x = -B, se usa para saber que tenemos que convertir B a negativo
 
@@ -96,21 +98,39 @@ class Semantica:
     def addVar(self, id, type, func):
         if self.checkVar(id,func): # variable ya existe
             raise ValueError(f"Variable {id} already declared in this scope. function name: {func}")
+        
+        if type == "int":
+            t = 1
+        elif type == "float":
+            t = 0
+        
         # revisamos si es una variable global o local
         if self.dirFunc[func][0] == "program": # estamos en el directorio del programa
             # checamos si tenemos espacio
-            if self.currMGlobal > self.rangoMGlobal: # ya llenamos la memoria
-                raise ValueError(f"cant save {id}. Out of memory")
-            # dar dirección de memoria de variable global
-            self.dirFunc[func][1][id] = [type,self.currMGlobal]
-            self.currMGlobal += 1 # actualizamos el contador de memoria
+            if t == 1: # int
+                if self.currMGlobalI > self.rangoMGlobalI: # ya llenamos la memoria
+                    raise ValueError(f"cant save {id}. Out of memory")
+                self.dirFunc[func][1][id] = [t,self.currMGlobalI]
+                self.currMGlobalI += 1 # actualizamos el contador de memoria
+            elif t == 0: # float
+                if self.currMGlobalF > self.rangoMGlobalF: # ya llenamos la memoria
+                    raise ValueError(f"cant save {id}. Out of memory")
+                # dar dirección de memoria de variable global flotante
+                self.dirFunc[func][1][id] = [t,self.currMGlobalF]
+                self.currMGlobalF += 1 # actualizamos el contador de memoria
         else: # estamos en una función, agregando variables locales
             #checar si tenemos espacio
-            if self.currMLocal > self.rangoMLocal:
-                raise ValueError(f"cant save {id}. Out of memory")
-            # dar dirección de memoria de variable local        
-            self.dirFunc[func][1][id] = [type, self.currMLocal]
-            self.currMLocal += 1 # actualizamos el contador de memoria
+            if t == 1:
+                if self.currMLocalI > self.rangoMLocalI:
+                    raise ValueError(f"cant save {id}. Out of memory")
+                self.dirFunc[func][1][id] = [t, self.currMLocalI]
+                self.currMLocalI += 1 # actualizamos el contador de memoria
+            elif t == 0:
+                if self.currMLocalF > self.rangoMLocalF:
+                    raise ValueError(f"cant save {id}. Out of memory")
+                # dar dirección de memoria de variable local        
+                self.dirFunc[func][1][id] = [t, self.currMLocalF]
+                self.currMLocalF += 1 # actualizamos el contador de memoria
 
     
     def addListVar(self, listIDS, type, func):
@@ -137,8 +157,15 @@ class Semantica:
         # la variable si existe
         # sacar la dirección de memoria de esa variable
         dirM = self.getDireccionMemoria(id,func)
-        self.pilaVariables.append(dirM) # lo ponemos a la pila
-        
+        tipo = self.getTipo(id,func) # sacamos el tipo
+        self.pilaVariables.append(dirM) # lo ponemos a la pila de var
+        self.pilaTipos.append(tipo) # ponemos el tipo
+    
+    def getTipo(self, id, func = None):
+        if func == None:
+            func = self.currFunc
+        return self.dirFunc[func][1][id][0]
+
     def addPilaOp(self, op):
         # +  --> 0
         # -  --> 1
@@ -154,34 +181,59 @@ class Semantica:
         # print -> 11
         self.pilaOperadores.append(op)
     
-    def addCuadruplo(self, op, OpI, OpD):
+    def addCuadruplo(self, op, OpI, OpD, TI = None, TD = None):
+        # revisar que tipo me da haciendo uso de mi cuadro semantico
+
         if (op == 7): # cuadruplo de asignación.
             cuadruplo = [op, OpD,None,OpI]
-        else: # cualquier otra operación
-            # revisar si hay espacio en memoria temporal
-            if self.currMLocal > self.rangoMTemp:
-                raise MemoryError(f"Out of temp memory")
-
-            # "creamos" la variable temporal
-            temp = self.currMTemp
+        elif op in [0,1,2,3,4,5,6] : # operaciones que generan un resultado temporal
+            # revisar el type del resultado temporal
+            tipoT = self.cuboSemantico[TI][TD][op]
+            if tipoT == -1:
+                raise ValueError(f"mismatch type, cant do {op} to type {self.tiposTag[TI]} and {self.tiposTag[TD]} ")
+            if tipoT == 0:   # float
+                # revisar si hay espacio en memoria temporal
+                if self.currMLocalF > self.rangoMTempF:
+                    raise MemoryError(f"Out of temp memory")
+                # "creamos" la variable temporal
+                temp = self.currMTempF
+            elif tipoT == 1: # int
+                # revisar si hay espacio en memoria temporal
+                if self.currMLocalI > self.rangoMTempI:
+                    raise MemoryError(f"Out of temp memory")
+                # "creamos" la variable temporal
+                temp = self.currMTempI
+                self.currMTempI += 1 #actualizamos valor de memoria temporal
             cuadruplo = [op,OpI,OpD, temp]
             self.pilaVariables.append(temp)
-            self.currMTemp += 1 #actualizamos valor de memoria temporal
-            self.currCuadruplo += 1 # el siguiente cuadruplo estara en 
+            self.pilaTipos.append(tipoT)
+            self.currCuadruplo += 1 # el siguiente cuadruplo estara en curr + 1
         self.cuadruplos.append(cuadruplo) # guardamos cuadruplo
     
     def addCTE(self, cte, type, func = None): # para agregar constantes
         if func == None:
             func = self.currFunc
         
+        if type == "int":
+            t = 1
+        elif type == "float":
+            t = 0
+        
         # checar si ya existe la constante
         if not self.checkCTE(cte, func): # si no existe la cte, la creamos
-
-            if self.currMCte > self.rangoMCte: # checamos si tenemos espacio en memoria
-                raise ValueError("Run out of memory for cte variables")
+            # ver si es int o float
+            if t == 1: # es int
+                if self.currMCteI > self.rangoMCteI: # checamos si tenemos espacio en memoria
+                    raise ValueError("Run out of memory for constant int variables")
+                currMCte = self.currMCteI
+                self.currMCteI += 1   
+            elif t == 0: # es float
+                if self.currMCteF > self.rangoMCteF: # checamos si tenemos espacio en memoria
+                    raise ValueError("Run out of memory for constant float variables")
+                currMCte = self.currMCteF
+                self.currMCteF += 1
             # guardamos en el dir
-            self.dirFunc[func][1][cte] = [type,self.currMCte]
-            self.currMCte += 1 # actualizamos el nuevo valor de memoria
+            self.dirFunc[func][1][cte] = [t,currMCte]
 
     def getDireccionMemoria(self,id,func = None):
         if func == None:
