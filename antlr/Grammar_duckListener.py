@@ -8,8 +8,8 @@ else:
 import sys
 sys.path.insert(0, './Semantica.py') 
 from Semantica import Semantica
-global DF
-DF = Semantica()
+global semantica
+semantica = Semantica()
 
 
 # This class defines a complete listener for a parse tree produced by Grammar_duckParser.
@@ -159,12 +159,21 @@ class Grammar_duckListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by Grammar_duckParser#comparar_exp.
-    def enterComparar_exp(self, ctx:Grammar_duckParser.Comparar_expContext):
+    # Enter a parse tree produced by Grammar_duckParser#comparar.
+    def enterComparar(self, ctx:Grammar_duckParser.CompararContext):
         pass
 
-    # Exit a parse tree produced by Grammar_duckParser#comparar_exp.
-    def exitComparar_exp(self, ctx:Grammar_duckParser.Comparar_expContext):
+    # Exit a parse tree produced by Grammar_duckParser#comparar.
+    def exitComparar(self, ctx:Grammar_duckParser.CompararContext):
+        pass
+
+
+    # Enter a parse tree produced by Grammar_duckParser#comparacion.
+    def enterComparacion(self, ctx:Grammar_duckParser.ComparacionContext):
+        pass
+
+    # Exit a parse tree produced by Grammar_duckParser#comparacion.
+    def exitComparacion(self, ctx:Grammar_duckParser.ComparacionContext):
         pass
 
 
@@ -177,24 +186,6 @@ class Grammar_duckListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by Grammar_duckParser#list_terminos.
-    def enterList_terminos(self, ctx:Grammar_duckParser.List_terminosContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#list_terminos.
-    def exitList_terminos(self, ctx:Grammar_duckParser.List_terminosContext):
-        pass
-
-
-    # Enter a parse tree produced by Grammar_duckParser#next_termino.
-    def enterNext_termino(self, ctx:Grammar_duckParser.Next_terminoContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#next_termino.
-    def exitNext_termino(self, ctx:Grammar_duckParser.Next_terminoContext):
-        pass
-
-
     # Enter a parse tree produced by Grammar_duckParser#sum_rest.
     def enterSum_rest(self, ctx:Grammar_duckParser.Sum_restContext):
         pass
@@ -204,30 +195,21 @@ class Grammar_duckListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by Grammar_duckParser#x.
+    def enterX(self, ctx:Grammar_duckParser.XContext):
+        pass
+
+    # Exit a parse tree produced by Grammar_duckParser#x.
+    def exitX(self, ctx:Grammar_duckParser.XContext):
+        pass
+
+
     # Enter a parse tree produced by Grammar_duckParser#termino.
     def enterTermino(self, ctx:Grammar_duckParser.TerminoContext):
         pass
 
     # Exit a parse tree produced by Grammar_duckParser#termino.
     def exitTermino(self, ctx:Grammar_duckParser.TerminoContext):
-        pass
-
-
-    # Enter a parse tree produced by Grammar_duckParser#list_factor.
-    def enterList_factor(self, ctx:Grammar_duckParser.List_factorContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#list_factor.
-    def exitList_factor(self, ctx:Grammar_duckParser.List_factorContext):
-        pass
-
-
-    # Enter a parse tree produced by Grammar_duckParser#next_factor.
-    def enterNext_factor(self, ctx:Grammar_duckParser.Next_factorContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#next_factor.
-    def exitNext_factor(self, ctx:Grammar_duckParser.Next_factorContext):
         pass
 
 
@@ -246,6 +228,15 @@ class Grammar_duckListener(ParseTreeListener):
 
     # Exit a parse tree produced by Grammar_duckParser#factor.
     def exitFactor(self, ctx:Grammar_duckParser.FactorContext):
+        pass
+
+
+    # Enter a parse tree produced by Grammar_duckParser#positivo_negativo.
+    def enterPositivo_negativo(self, ctx:Grammar_duckParser.Positivo_negativoContext):
+        pass
+
+    # Exit a parse tree produced by Grammar_duckParser#positivo_negativo.
+    def exitPositivo_negativo(self, ctx:Grammar_duckParser.Positivo_negativoContext):
         pass
 
 

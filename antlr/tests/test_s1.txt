@@ -1,14 +1,8 @@
 program Test_s1 ;
 
-var x,y : int ; a,b,c, J : float;
+var x,c : int ; J : float;
 
 main{
-    x = 1;
-    y = 3;
-    a = 2.1;
-    b = a;
-    c = 3.3;
-
-    J = x*x+(-23+1*4) > c;
+    J = x*x+1 + (4-(-1));
 }
 end

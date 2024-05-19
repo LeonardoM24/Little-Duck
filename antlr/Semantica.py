@@ -138,6 +138,7 @@ class Semantica:
         # sacar la dirección de memoria de esa variable
         dirM = self.getDireccionMemoria(id,func)
         self.pilaVariables.append(dirM) # lo ponemos a la pila
+        
     def addPilaOp(self, op):
         # +  --> 0
         # -  --> 1
@@ -152,6 +153,7 @@ class Semantica:
         # goToT -> 10
         # print -> 11
         self.pilaOperadores.append(op)
+    
     def addCuadruplo(self, op, OpI, OpD):
         if (op == 7): # cuadruplo de asignación.
             cuadruplo = [op, OpD,None,OpI]
@@ -165,8 +167,8 @@ class Semantica:
             cuadruplo = [op,OpI,OpD, temp]
             self.pilaVariables.append(temp)
             self.currMTemp += 1 #actualizamos valor de memoria temporal
-            self.cuadruplos.append(cuadruplo) # guardamos cuadruplo
             self.currCuadruplo += 1 # el siguiente cuadruplo estara en 
+        self.cuadruplos.append(cuadruplo) # guardamos cuadruplo
     
     def addCTE(self, cte, type, func = None): # para agregar constantes
         if func == None:
@@ -174,12 +176,13 @@ class Semantica:
         
         # checar si ya existe la constante
         if not self.checkCTE(cte, func): # si no existe la cte, la creamos
+
             if self.currMCte > self.rangoMCte: # checamos si tenemos espacio en memoria
                 raise ValueError("Run out of memory for cte variables")
             # guardamos en el dir
-            self.dirFunc[func][1][id] = [type,self.currMCte]
+            self.dirFunc[func][1][cte] = [type,self.currMCte]
             self.currMCte += 1 # actualizamos el nuevo valor de memoria
-    
+
     def getDireccionMemoria(self,id,func = None):
         if func == None:
             func = self.currFunc

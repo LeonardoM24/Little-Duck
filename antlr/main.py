@@ -45,4 +45,4 @@ if __name__ == '__main__': # programa main
 
         tree = parser.prog()
         
-        print(tree.toStringTree(recog=parser))
+        #print(tree.toStringTree(recog=parser))

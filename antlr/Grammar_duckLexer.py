@@ -11,8 +11,8 @@ else:
 import sys
 sys.path.insert(0, './Semantica.py') 
 from Semantica import Semantica
-global DF
-DF = Semantica()
+global semantica
+semantica = Semantica()
 
 
 def serializedATN():
