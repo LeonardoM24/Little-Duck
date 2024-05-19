@@ -17,7 +17,7 @@ semantica = Semantica()
 
 def serializedATN():
     return [
-        4,1,33,302,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,33,311,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
@@ -28,96 +28,99 @@ def serializedATN():
         1,5,1,5,1,5,1,6,5,6,115,8,6,10,6,12,6,118,9,6,1,7,1,7,1,7,1,7,1,
         7,3,7,125,8,7,1,8,1,8,1,8,1,8,1,8,1,9,1,9,1,9,1,9,1,9,3,9,137,8,
         9,1,10,1,10,3,10,141,8,10,1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,11,
-        1,12,1,12,1,12,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,1,13,1,14,
-        1,14,3,14,165,8,14,1,15,1,15,3,15,169,8,15,1,16,1,16,1,16,1,16,1,
-        17,1,17,1,17,1,17,1,17,1,17,3,17,181,8,17,1,18,1,18,1,18,1,18,1,
-        18,1,18,5,18,189,8,18,10,18,12,18,192,9,18,1,19,1,19,1,19,1,19,3,
-        19,198,8,19,1,20,1,20,1,20,1,20,5,20,204,8,20,10,20,12,20,207,9,
-        20,1,21,1,21,1,21,1,21,1,21,1,21,5,21,215,8,21,10,21,12,21,218,9,
-        21,1,22,1,22,1,22,1,22,3,22,224,8,22,1,23,1,23,1,23,1,23,1,23,1,
-        23,1,23,1,23,1,23,1,23,1,23,3,23,237,8,23,1,24,1,24,1,24,1,24,3,
-        24,243,8,24,1,25,1,25,1,25,3,25,248,8,25,1,26,1,26,1,26,1,26,3,26,
-        254,8,26,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,
-        1,27,1,27,1,27,1,28,3,28,271,8,28,1,29,1,29,1,29,1,29,1,29,1,29,
-        1,29,1,29,3,29,281,8,29,1,30,1,30,1,31,1,31,1,31,1,31,1,31,1,31,
-        1,32,1,32,1,32,3,32,294,8,32,1,33,1,33,1,33,1,33,3,33,300,8,33,1,
-        33,0,0,34,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,
-        40,42,44,46,48,50,52,54,56,58,60,62,64,66,0,0,296,0,68,1,0,0,0,2,
-        86,1,0,0,0,4,90,1,0,0,0,6,99,1,0,0,0,8,103,1,0,0,0,10,109,1,0,0,
-        0,12,116,1,0,0,0,14,124,1,0,0,0,16,126,1,0,0,0,18,136,1,0,0,0,20,
-        140,1,0,0,0,22,142,1,0,0,0,24,150,1,0,0,0,26,156,1,0,0,0,28,164,
-        1,0,0,0,30,166,1,0,0,0,32,170,1,0,0,0,34,180,1,0,0,0,36,182,1,0,
-        0,0,38,197,1,0,0,0,40,199,1,0,0,0,42,208,1,0,0,0,44,223,1,0,0,0,
-        46,236,1,0,0,0,48,242,1,0,0,0,50,247,1,0,0,0,52,253,1,0,0,0,54,255,
-        1,0,0,0,56,270,1,0,0,0,58,272,1,0,0,0,60,282,1,0,0,0,62,284,1,0,
-        0,0,64,293,1,0,0,0,66,299,1,0,0,0,68,69,5,1,0,0,69,70,6,0,-1,0,70,
-        71,6,0,-1,0,71,72,5,30,0,0,72,73,6,0,-1,0,73,74,5,2,0,0,74,75,3,
-        4,2,0,75,76,3,2,1,0,76,77,5,3,0,0,77,78,3,10,5,0,78,79,5,4,0,0,79,
-        80,6,0,-1,0,80,81,6,0,-1,0,81,82,5,0,0,1,82,1,1,0,0,0,83,84,3,54,
-        27,0,84,85,3,2,1,0,85,87,1,0,0,0,86,83,1,0,0,0,86,87,1,0,0,0,87,
-        3,1,0,0,0,88,89,5,5,0,0,89,91,3,6,3,0,90,88,1,0,0,0,90,91,1,0,0,
-        0,91,5,1,0,0,0,92,93,6,3,-1,0,93,94,3,8,4,0,94,95,5,6,0,0,95,96,
-        5,29,0,0,96,97,6,3,-1,0,97,98,5,2,0,0,98,100,1,0,0,0,99,92,1,0,0,
-        0,100,101,1,0,0,0,101,99,1,0,0,0,101,102,1,0,0,0,102,7,1,0,0,0,103,
-        104,5,30,0,0,104,107,6,4,-1,0,105,106,5,7,0,0,106,108,3,8,4,0,107,
-        105,1,0,0,0,107,108,1,0,0,0,108,9,1,0,0,0,109,110,5,8,0,0,110,111,
-        3,12,6,0,111,112,5,9,0,0,112,11,1,0,0,0,113,115,3,14,7,0,114,113,
-        1,0,0,0,115,118,1,0,0,0,116,114,1,0,0,0,116,117,1,0,0,0,117,13,1,
-        0,0,0,118,116,1,0,0,0,119,125,3,22,11,0,120,125,3,26,13,0,121,125,
-        3,24,12,0,122,125,3,62,31,0,123,125,3,16,8,0,124,119,1,0,0,0,124,
-        120,1,0,0,0,124,121,1,0,0,0,124,122,1,0,0,0,124,123,1,0,0,0,125,
-        15,1,0,0,0,126,127,5,10,0,0,127,128,3,18,9,0,128,129,5,11,0,0,129,
-        130,5,2,0,0,130,17,1,0,0,0,131,137,3,20,10,0,132,133,3,20,10,0,133,
-        134,5,7,0,0,134,135,3,18,9,0,135,137,1,0,0,0,136,131,1,0,0,0,136,
-        132,1,0,0,0,137,19,1,0,0,0,138,141,3,30,15,0,139,141,5,33,0,0,140,
-        138,1,0,0,0,140,139,1,0,0,0,141,21,1,0,0,0,142,143,5,30,0,0,143,
-        144,6,11,-1,0,144,145,5,12,0,0,145,146,6,11,-1,0,146,147,3,30,15,
-        0,147,148,5,2,0,0,148,149,6,11,-1,0,149,23,1,0,0,0,150,151,5,13,
-        0,0,151,152,3,10,5,0,152,153,5,14,0,0,153,154,3,30,15,0,154,155,
-        5,2,0,0,155,25,1,0,0,0,156,157,5,15,0,0,157,158,3,30,15,0,158,159,
-        3,10,5,0,159,160,3,28,14,0,160,161,5,2,0,0,161,27,1,0,0,0,162,163,
-        5,16,0,0,163,165,3,10,5,0,164,162,1,0,0,0,164,165,1,0,0,0,165,29,
-        1,0,0,0,166,168,3,36,18,0,167,169,3,32,16,0,168,167,1,0,0,0,168,
-        169,1,0,0,0,169,31,1,0,0,0,170,171,3,34,17,0,171,172,3,36,18,0,172,
-        173,6,16,-1,0,173,33,1,0,0,0,174,175,5,17,0,0,175,181,6,17,-1,0,
-        176,177,5,18,0,0,177,181,6,17,-1,0,178,179,5,19,0,0,179,181,6,17,
-        -1,0,180,174,1,0,0,0,180,176,1,0,0,0,180,178,1,0,0,0,181,35,1,0,
-        0,0,182,183,3,42,21,0,183,190,6,18,-1,0,184,185,3,38,19,0,185,186,
-        3,42,21,0,186,187,6,18,-1,0,187,189,1,0,0,0,188,184,1,0,0,0,189,
-        192,1,0,0,0,190,188,1,0,0,0,190,191,1,0,0,0,191,37,1,0,0,0,192,190,
-        1,0,0,0,193,194,5,20,0,0,194,198,6,19,-1,0,195,196,5,21,0,0,196,
-        198,6,19,-1,0,197,193,1,0,0,0,197,195,1,0,0,0,198,39,1,0,0,0,199,
-        205,3,46,23,0,200,201,3,44,22,0,201,202,3,46,23,0,202,204,1,0,0,
-        0,203,200,1,0,0,0,204,207,1,0,0,0,205,203,1,0,0,0,205,206,1,0,0,
-        0,206,41,1,0,0,0,207,205,1,0,0,0,208,209,3,46,23,0,209,216,6,21,
-        -1,0,210,211,3,44,22,0,211,212,3,46,23,0,212,213,6,21,-1,0,213,215,
-        1,0,0,0,214,210,1,0,0,0,215,218,1,0,0,0,216,214,1,0,0,0,216,217,
-        1,0,0,0,217,43,1,0,0,0,218,216,1,0,0,0,219,220,5,22,0,0,220,224,
-        6,22,-1,0,221,222,5,23,0,0,222,224,6,22,-1,0,223,219,1,0,0,0,223,
-        221,1,0,0,0,224,45,1,0,0,0,225,226,5,24,0,0,226,227,6,23,-1,0,227,
-        228,3,30,15,0,228,229,5,11,0,0,229,230,6,23,-1,0,230,237,1,0,0,0,
-        231,232,3,48,24,0,232,233,3,50,25,0,233,234,6,23,-1,0,234,237,1,
-        0,0,0,235,237,3,50,25,0,236,225,1,0,0,0,236,231,1,0,0,0,236,235,
-        1,0,0,0,237,47,1,0,0,0,238,239,5,20,0,0,239,243,6,24,-1,0,240,241,
-        5,21,0,0,241,243,6,24,-1,0,242,238,1,0,0,0,242,240,1,0,0,0,243,49,
-        1,0,0,0,244,245,5,30,0,0,245,248,6,25,-1,0,246,248,3,52,26,0,247,
-        244,1,0,0,0,247,246,1,0,0,0,248,51,1,0,0,0,249,250,5,31,0,0,250,
-        254,6,26,-1,0,251,252,5,32,0,0,252,254,6,26,-1,0,253,249,1,0,0,0,
-        253,251,1,0,0,0,254,53,1,0,0,0,255,256,5,25,0,0,256,257,6,27,-1,
-        0,257,258,5,30,0,0,258,259,6,27,-1,0,259,260,5,24,0,0,260,261,3,
-        56,28,0,261,262,5,11,0,0,262,263,5,26,0,0,263,264,3,60,30,0,264,
-        265,3,10,5,0,265,266,5,27,0,0,266,267,5,2,0,0,267,268,6,27,-1,0,
-        268,55,1,0,0,0,269,271,3,58,29,0,270,269,1,0,0,0,270,271,1,0,0,0,
-        271,57,1,0,0,0,272,273,5,30,0,0,273,274,6,29,-1,0,274,275,5,6,0,
-        0,275,276,5,29,0,0,276,277,6,29,-1,0,277,280,1,0,0,0,278,279,5,7,
-        0,0,279,281,3,58,29,0,280,278,1,0,0,0,280,281,1,0,0,0,281,59,1,0,
-        0,0,282,283,3,4,2,0,283,61,1,0,0,0,284,285,5,30,0,0,285,286,5,24,
-        0,0,286,287,3,64,32,0,287,288,5,11,0,0,288,289,5,2,0,0,289,63,1,
-        0,0,0,290,291,3,30,15,0,291,292,3,66,33,0,292,294,1,0,0,0,293,290,
-        1,0,0,0,293,294,1,0,0,0,294,65,1,0,0,0,295,296,5,7,0,0,296,297,3,
-        30,15,0,297,298,3,66,33,0,298,300,1,0,0,0,299,295,1,0,0,0,299,300,
-        1,0,0,0,300,67,1,0,0,0,24,86,90,101,107,116,124,136,140,164,168,
-        180,190,197,205,216,223,236,242,247,253,270,280,293,299
+        1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,13,1,13,1,13,
+        1,13,1,13,1,13,1,13,1,13,1,13,1,13,1,14,1,14,1,14,3,14,174,8,14,
+        1,15,1,15,3,15,178,8,15,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,
+        1,17,1,17,3,17,190,8,17,1,18,1,18,1,18,1,18,1,18,1,18,5,18,198,8,
+        18,10,18,12,18,201,9,18,1,19,1,19,1,19,1,19,3,19,207,8,19,1,20,1,
+        20,1,20,1,20,5,20,213,8,20,10,20,12,20,216,9,20,1,21,1,21,1,21,1,
+        21,1,21,1,21,5,21,224,8,21,10,21,12,21,227,9,21,1,22,1,22,1,22,1,
+        22,3,22,233,8,22,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,
+        23,1,23,3,23,246,8,23,1,24,1,24,1,24,1,24,3,24,252,8,24,1,25,1,25,
+        1,25,3,25,257,8,25,1,26,1,26,1,26,1,26,3,26,263,8,26,1,27,1,27,1,
+        27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,28,3,
+        28,280,8,28,1,29,1,29,1,29,1,29,1,29,1,29,1,29,1,29,3,29,290,8,29,
+        1,30,1,30,1,31,1,31,1,31,1,31,1,31,1,31,1,32,1,32,1,32,3,32,303,
+        8,32,1,33,1,33,1,33,1,33,3,33,309,8,33,1,33,0,0,34,0,2,4,6,8,10,
+        12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,
+        56,58,60,62,64,66,0,0,305,0,68,1,0,0,0,2,86,1,0,0,0,4,90,1,0,0,0,
+        6,99,1,0,0,0,8,103,1,0,0,0,10,109,1,0,0,0,12,116,1,0,0,0,14,124,
+        1,0,0,0,16,126,1,0,0,0,18,136,1,0,0,0,20,140,1,0,0,0,22,142,1,0,
+        0,0,24,150,1,0,0,0,26,160,1,0,0,0,28,173,1,0,0,0,30,175,1,0,0,0,
+        32,179,1,0,0,0,34,189,1,0,0,0,36,191,1,0,0,0,38,206,1,0,0,0,40,208,
+        1,0,0,0,42,217,1,0,0,0,44,232,1,0,0,0,46,245,1,0,0,0,48,251,1,0,
+        0,0,50,256,1,0,0,0,52,262,1,0,0,0,54,264,1,0,0,0,56,279,1,0,0,0,
+        58,281,1,0,0,0,60,291,1,0,0,0,62,293,1,0,0,0,64,302,1,0,0,0,66,308,
+        1,0,0,0,68,69,5,1,0,0,69,70,6,0,-1,0,70,71,6,0,-1,0,71,72,5,30,0,
+        0,72,73,6,0,-1,0,73,74,5,2,0,0,74,75,3,4,2,0,75,76,3,2,1,0,76,77,
+        5,3,0,0,77,78,3,10,5,0,78,79,5,4,0,0,79,80,6,0,-1,0,80,81,6,0,-1,
+        0,81,82,5,0,0,1,82,1,1,0,0,0,83,84,3,54,27,0,84,85,3,2,1,0,85,87,
+        1,0,0,0,86,83,1,0,0,0,86,87,1,0,0,0,87,3,1,0,0,0,88,89,5,5,0,0,89,
+        91,3,6,3,0,90,88,1,0,0,0,90,91,1,0,0,0,91,5,1,0,0,0,92,93,6,3,-1,
+        0,93,94,3,8,4,0,94,95,5,6,0,0,95,96,5,29,0,0,96,97,6,3,-1,0,97,98,
+        5,2,0,0,98,100,1,0,0,0,99,92,1,0,0,0,100,101,1,0,0,0,101,99,1,0,
+        0,0,101,102,1,0,0,0,102,7,1,0,0,0,103,104,5,30,0,0,104,107,6,4,-1,
+        0,105,106,5,7,0,0,106,108,3,8,4,0,107,105,1,0,0,0,107,108,1,0,0,
+        0,108,9,1,0,0,0,109,110,5,8,0,0,110,111,3,12,6,0,111,112,5,9,0,0,
+        112,11,1,0,0,0,113,115,3,14,7,0,114,113,1,0,0,0,115,118,1,0,0,0,
+        116,114,1,0,0,0,116,117,1,0,0,0,117,13,1,0,0,0,118,116,1,0,0,0,119,
+        125,3,22,11,0,120,125,3,26,13,0,121,125,3,24,12,0,122,125,3,62,31,
+        0,123,125,3,16,8,0,124,119,1,0,0,0,124,120,1,0,0,0,124,121,1,0,0,
+        0,124,122,1,0,0,0,124,123,1,0,0,0,125,15,1,0,0,0,126,127,5,10,0,
+        0,127,128,3,18,9,0,128,129,5,11,0,0,129,130,5,2,0,0,130,17,1,0,0,
+        0,131,137,3,20,10,0,132,133,3,20,10,0,133,134,5,7,0,0,134,135,3,
+        18,9,0,135,137,1,0,0,0,136,131,1,0,0,0,136,132,1,0,0,0,137,19,1,
+        0,0,0,138,141,3,30,15,0,139,141,5,33,0,0,140,138,1,0,0,0,140,139,
+        1,0,0,0,141,21,1,0,0,0,142,143,5,30,0,0,143,144,6,11,-1,0,144,145,
+        5,12,0,0,145,146,6,11,-1,0,146,147,3,30,15,0,147,148,5,2,0,0,148,
+        149,6,11,-1,0,149,23,1,0,0,0,150,151,5,13,0,0,151,152,6,12,-1,0,
+        152,153,3,10,5,0,153,154,5,14,0,0,154,155,5,15,0,0,155,156,3,30,
+        15,0,156,157,5,11,0,0,157,158,5,2,0,0,158,159,6,12,-1,0,159,25,1,
+        0,0,0,160,161,5,16,0,0,161,162,6,13,-1,0,162,163,5,15,0,0,163,164,
+        3,30,15,0,164,165,5,11,0,0,165,166,3,10,5,0,166,167,3,28,14,0,167,
+        168,5,2,0,0,168,169,6,13,-1,0,169,27,1,0,0,0,170,171,5,17,0,0,171,
+        172,6,14,-1,0,172,174,3,10,5,0,173,170,1,0,0,0,173,174,1,0,0,0,174,
+        29,1,0,0,0,175,177,3,36,18,0,176,178,3,32,16,0,177,176,1,0,0,0,177,
+        178,1,0,0,0,178,31,1,0,0,0,179,180,3,34,17,0,180,181,3,36,18,0,181,
+        182,6,16,-1,0,182,33,1,0,0,0,183,184,5,18,0,0,184,190,6,17,-1,0,
+        185,186,5,19,0,0,186,190,6,17,-1,0,187,188,5,20,0,0,188,190,6,17,
+        -1,0,189,183,1,0,0,0,189,185,1,0,0,0,189,187,1,0,0,0,190,35,1,0,
+        0,0,191,192,3,42,21,0,192,199,6,18,-1,0,193,194,3,38,19,0,194,195,
+        3,42,21,0,195,196,6,18,-1,0,196,198,1,0,0,0,197,193,1,0,0,0,198,
+        201,1,0,0,0,199,197,1,0,0,0,199,200,1,0,0,0,200,37,1,0,0,0,201,199,
+        1,0,0,0,202,203,5,21,0,0,203,207,6,19,-1,0,204,205,5,22,0,0,205,
+        207,6,19,-1,0,206,202,1,0,0,0,206,204,1,0,0,0,207,39,1,0,0,0,208,
+        214,3,46,23,0,209,210,3,44,22,0,210,211,3,46,23,0,211,213,1,0,0,
+        0,212,209,1,0,0,0,213,216,1,0,0,0,214,212,1,0,0,0,214,215,1,0,0,
+        0,215,41,1,0,0,0,216,214,1,0,0,0,217,218,3,46,23,0,218,225,6,21,
+        -1,0,219,220,3,44,22,0,220,221,3,46,23,0,221,222,6,21,-1,0,222,224,
+        1,0,0,0,223,219,1,0,0,0,224,227,1,0,0,0,225,223,1,0,0,0,225,226,
+        1,0,0,0,226,43,1,0,0,0,227,225,1,0,0,0,228,229,5,23,0,0,229,233,
+        6,22,-1,0,230,231,5,24,0,0,231,233,6,22,-1,0,232,228,1,0,0,0,232,
+        230,1,0,0,0,233,45,1,0,0,0,234,235,5,15,0,0,235,236,6,23,-1,0,236,
+        237,3,30,15,0,237,238,5,11,0,0,238,239,6,23,-1,0,239,246,1,0,0,0,
+        240,241,3,48,24,0,241,242,3,50,25,0,242,243,6,23,-1,0,243,246,1,
+        0,0,0,244,246,3,50,25,0,245,234,1,0,0,0,245,240,1,0,0,0,245,244,
+        1,0,0,0,246,47,1,0,0,0,247,248,5,21,0,0,248,252,6,24,-1,0,249,250,
+        5,22,0,0,250,252,6,24,-1,0,251,247,1,0,0,0,251,249,1,0,0,0,252,49,
+        1,0,0,0,253,254,5,30,0,0,254,257,6,25,-1,0,255,257,3,52,26,0,256,
+        253,1,0,0,0,256,255,1,0,0,0,257,51,1,0,0,0,258,259,5,31,0,0,259,
+        263,6,26,-1,0,260,261,5,32,0,0,261,263,6,26,-1,0,262,258,1,0,0,0,
+        262,260,1,0,0,0,263,53,1,0,0,0,264,265,5,25,0,0,265,266,6,27,-1,
+        0,266,267,5,30,0,0,267,268,6,27,-1,0,268,269,5,15,0,0,269,270,3,
+        56,28,0,270,271,5,11,0,0,271,272,5,26,0,0,272,273,3,60,30,0,273,
+        274,3,10,5,0,274,275,5,27,0,0,275,276,5,2,0,0,276,277,6,27,-1,0,
+        277,55,1,0,0,0,278,280,3,58,29,0,279,278,1,0,0,0,279,280,1,0,0,0,
+        280,57,1,0,0,0,281,282,5,30,0,0,282,283,6,29,-1,0,283,284,5,6,0,
+        0,284,285,5,29,0,0,285,286,6,29,-1,0,286,289,1,0,0,0,287,288,5,7,
+        0,0,288,290,3,58,29,0,289,287,1,0,0,0,289,290,1,0,0,0,290,59,1,0,
+        0,0,291,292,3,4,2,0,292,61,1,0,0,0,293,294,5,30,0,0,294,295,5,15,
+        0,0,295,296,3,64,32,0,296,297,5,11,0,0,297,298,5,2,0,0,298,63,1,
+        0,0,0,299,300,3,30,15,0,300,301,3,66,33,0,301,303,1,0,0,0,302,299,
+        1,0,0,0,302,303,1,0,0,0,303,65,1,0,0,0,304,305,5,7,0,0,305,306,3,
+        30,15,0,306,307,3,66,33,0,307,309,1,0,0,0,308,304,1,0,0,0,308,309,
+        1,0,0,0,309,67,1,0,0,0,24,86,90,101,107,116,124,136,140,173,177,
+        189,199,206,214,225,232,245,251,256,262,279,289,302,308
     ]
 
 class Grammar_duckParser ( Parser ):
@@ -132,8 +135,8 @@ class Grammar_duckParser ( Parser ):
 
     literalNames = [ "<INVALID>", "'program'", "';'", "'main'", "'end'", 
                      "'var'", "':'", "','", "'{'", "'}'", "'print('", "')'", 
-                     "'='", "'do'", "'while'", "'if'", "'else'", "'<'", 
-                     "'>'", "'!='", "'+'", "'-'", "'*'", "'/'", "'('", "'void'", 
+                     "'='", "'do'", "'while'", "'('", "'if'", "'else'", 
+                     "'<'", "'>'", "'!='", "'+'", "'-'", "'*'", "'/'", "'void'", 
                      "'['", "']'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
@@ -645,7 +648,7 @@ class Grammar_duckParser ( Parser ):
             self.state = 116
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 1073783808) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 1073816576) != 0):
                 self.state = 113
                 self.statement()
                 self.state = 118
@@ -897,7 +900,7 @@ class Grammar_duckParser ( Parser ):
             self.state = 140
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [20, 21, 24, 30, 31, 32]:
+            if token in [15, 21, 22, 30, 31, 32]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 138
                 self.expresion()
@@ -1033,14 +1036,36 @@ class Grammar_duckParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 150
             self.match(Grammar_duckParser.T__12)
-            self.state = 151
-            self.body()
+
+            indice = semantica.currCuadruplo
+            semantica.pilaSaltos.append(indice)
+
             self.state = 152
-            self.match(Grammar_duckParser.T__13)
+            self.body()
             self.state = 153
-            self.expresion()
+            self.match(Grammar_duckParser.T__13)
             self.state = 154
+            self.match(Grammar_duckParser.T__14)
+            self.state = 155
+            self.expresion()
+            self.state = 156
+            self.match(Grammar_duckParser.T__10)
+            self.state = 157
             self.match(Grammar_duckParser.T__1)
+
+            indice      = semantica.pilaSaltos.pop() # a donde tenemos que saltar
+            comparacion = semantica.pilaVariables.pop() # la exprecion que estamos comparando
+            tipo = semantica.pilaTipos.pop() # sacamos el tipo de la pila de tipos
+            op = 10 # goToTrue
+            try:
+                semantica.addCuadruplo(op,comparacion,indice)
+            except MemoryError() as e:
+                print(e)
+                sys.exit()
+            except ValueError as e2:
+                print(e)
+                sys.exit()
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1089,16 +1114,39 @@ class Grammar_duckParser ( Parser ):
         self.enterRule(localctx, 26, self.RULE_condition)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 156
-            self.match(Grammar_duckParser.T__14)
-            self.state = 157
-            self.expresion()
-            self.state = 158
-            self.body()
-            self.state = 159
-            self.else_()
             self.state = 160
+            self.match(Grammar_duckParser.T__15)
+
+            indice = semantica
+            semantica.pilaSaltos.append(indice)
+            comparacion = semantica.pilaVariables.pop() # la exprecion que estamos comparando
+            tipo = semantica.pilaTipos.pop() # sacamos el tipo de la pila de tipos
+            op = 9 # GoToFalse
+            try:
+                semantica.addCuadruplo(op,comparacion,indice)
+            except MemoryError() as e:
+                print(e)
+                sys.exit()
+            except ValueError as e2:
+                print(e)
+                sys.exit()
+
+            self.state = 162
+            self.match(Grammar_duckParser.T__14)
+            self.state = 163
+            self.expresion()
+            self.state = 164
+            self.match(Grammar_duckParser.T__10)
+            self.state = 165
+            self.body()
+            self.state = 166
+            self.else_()
+            self.state = 167
             self.match(Grammar_duckParser.T__1)
+
+            indice = semantica.pilaSaltos.pop() # a donde tenemos que regrear para editar
+            semantica.setGoTo(indice, semantica.currCuadruplo)
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1140,13 +1188,29 @@ class Grammar_duckParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 164
+            self.state = 173
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==16:
-                self.state = 162
-                self.match(Grammar_duckParser.T__15)
-                self.state = 163
+            if _la==17:
+                self.state = 170
+                self.match(Grammar_duckParser.T__16)
+
+                temp = semantica.pilaSaltos.pop() # indice del if
+                indice = semantica.currCuadruplo # cuadruplo actual
+                semantica.pilaSaltos.append(indice)
+                op = 8 # GoTo
+                try:
+                    semantica.addCuadruplo(op)
+                except MemoryError() as e:
+                    print(e)
+                    sys.exit()
+                except ValueError as e2:
+                    print(e)
+                    sys.exit()
+                indice = semantica.currCuadruplo # debio cambiar ya que agregamos el GoTo
+                semantica.setGoTo(temp,indice) # ponemos a donde debe saltar el if si es falso
+
+                self.state = 172
                 self.body()
 
 
@@ -1195,13 +1259,13 @@ class Grammar_duckParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 166
+            self.state = 175
             self.exp()
-            self.state = 168
+            self.state = 177
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 917504) != 0):
-                self.state = 167
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 1835008) != 0):
+                self.state = 176
                 self.comparar()
 
 
@@ -1249,9 +1313,9 @@ class Grammar_duckParser ( Parser ):
         self.enterRule(localctx, 32, self.RULE_comparar)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 170
+            self.state = 179
             self.comparacion()
-            self.state = 171
+            self.state = 180
             self.exp()
 
             # terminar la comparacion
@@ -1305,25 +1369,25 @@ class Grammar_duckParser ( Parser ):
         localctx = Grammar_duckParser.ComparacionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_comparacion)
         try:
-            self.state = 180
+            self.state = 189
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [17]:
+            if token in [18]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 174
-                self.match(Grammar_duckParser.T__16)
+                self.state = 183
+                self.match(Grammar_duckParser.T__17)
                 semantica.addPilaOp(4)
                 pass
-            elif token in [18]:
+            elif token in [19]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 176
-                self.match(Grammar_duckParser.T__17)
+                self.state = 185
+                self.match(Grammar_duckParser.T__18)
                 semantica.addPilaOp(5)
                 pass
-            elif token in [19]:
+            elif token in [20]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 178
-                self.match(Grammar_duckParser.T__18)
+                self.state = 187
+                self.match(Grammar_duckParser.T__19)
                 semantica.addPilaOp(6)
                 pass
             else:
@@ -1380,34 +1444,11 @@ class Grammar_duckParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 182
+            self.state = 191
             self.termino()
 
-            if semantica.pilaOperadores[-1] == 0 or semantica.pilaOperadores[-1] == 1:
-                op = semantica.pilaOperadores.pop()
-                opD = semantica.pilaVariables.pop()
-                opI = semantica.pilaVariables.pop()
-                TD = semantica.pilaTipos.pop()
-                TI = semantica.pilaTipos.pop()
-                try:
-                    semantica.addCuadruplo(op,opI,opD,TI,TD)
-                except MemoryError() as e:
-                    print(e)
-                    sys.exit()
-                except VelueError() as e2:
-                    print(e2)
-                    sys.exit()
-
-            self.state = 190
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==20 or _la==21:
-                self.state = 184
-                self.sum_rest()
-                self.state = 185
-                self.termino()
-
-                if semantica.pilaOperadores[-1] == 0 or semantica.pilaOperadores[-1] == 1:
+            if semantica.pilaOperadores : # revisar que no este vacio
+                if (semantica.pilaOperadores[-1] == 0) or (semantica.pilaOperadores[-1] == 1):
                     op = semantica.pilaOperadores.pop()
                     opD = semantica.pilaVariables.pop()
                     opI = semantica.pilaVariables.pop()
@@ -1422,7 +1463,32 @@ class Grammar_duckParser ( Parser ):
                         print(e2)
                         sys.exit()
 
-                self.state = 192
+            self.state = 199
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==21 or _la==22:
+                self.state = 193
+                self.sum_rest()
+                self.state = 194
+                self.termino()
+
+                if semantica.pilaOperadores : # revisar que no este vacio
+                    if (semantica.pilaOperadores[-1] == 0) or (semantica.pilaOperadores[-1]) == 1:
+                        op = semantica.pilaOperadores.pop()
+                        opD = semantica.pilaVariables.pop()
+                        opI = semantica.pilaVariables.pop()
+                        TD = semantica.pilaTipos.pop()
+                        TI = semantica.pilaTipos.pop()
+                        try:
+                            semantica.addCuadruplo(op,opI,opD,TI,TD)
+                        except MemoryError() as e:
+                            print(e)
+                            sys.exit()
+                        except VelueError() as e2:
+                            print(e2)
+                            sys.exit()
+
+                self.state = 201
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1462,19 +1528,19 @@ class Grammar_duckParser ( Parser ):
         localctx = Grammar_duckParser.Sum_restContext(self, self._ctx, self.state)
         self.enterRule(localctx, 38, self.RULE_sum_rest)
         try:
-            self.state = 197
+            self.state = 206
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [20]:
+            if token in [21]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 193
-                self.match(Grammar_duckParser.T__19)
+                self.state = 202
+                self.match(Grammar_duckParser.T__20)
                 semantica.addPilaOp(0)
                 pass
-            elif token in [21]:
+            elif token in [22]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 195
-                self.match(Grammar_duckParser.T__20)
+                self.state = 204
+                self.match(Grammar_duckParser.T__21)
                 semantica.addPilaOp(1)
                 pass
             else:
@@ -1531,17 +1597,17 @@ class Grammar_duckParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 199
+            self.state = 208
             self.factor()
-            self.state = 205
+            self.state = 214
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==22 or _la==23:
-                self.state = 200
+            while _la==23 or _la==24:
+                self.state = 209
                 self.mult_div()
-                self.state = 201
+                self.state = 210
                 self.factor()
-                self.state = 207
+                self.state = 216
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1596,33 +1662,10 @@ class Grammar_duckParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 208
+            self.state = 217
             self.factor()
 
-            if (semantica.pilaOperadores[-1] == 2) or (semantica.pilaOperadores[-1] == 3):
-                op = semantica.pilaOperadores.pop()
-                opD = semantica.pilaVariables.pop()
-                opI = semantica.pilaVariables.pop()
-                TD  = semantica.pilaTipos.pop()
-                TI  = semantica.pilaTipos.pop()
-                try:
-                    semantica.addCuadruplo(op,opI,opD,TI,TD)
-                except MemoryError() as e:
-                    print(e)
-                    sys.exit()
-                except ValueError as e2:
-                    print(e)
-                    sys.exit()
-
-            self.state = 216
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==22 or _la==23:
-                self.state = 210
-                self.mult_div()
-                self.state = 211
-                self.factor()
-
+            if semantica.pilaOperadores : # revisar que no este vacio
                 if (semantica.pilaOperadores[-1] == 2) or (semantica.pilaOperadores[-1] == 3):
                     op = semantica.pilaOperadores.pop()
                     opD = semantica.pilaVariables.pop()
@@ -1638,7 +1681,32 @@ class Grammar_duckParser ( Parser ):
                         print(e)
                         sys.exit()
 
-                self.state = 218
+            self.state = 225
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==23 or _la==24:
+                self.state = 219
+                self.mult_div()
+                self.state = 220
+                self.factor()
+
+                if semantica.pilaOperadores : # revisar que no este vacio
+                    if (semantica.pilaOperadores[-1] == 2) or (semantica.pilaOperadores[-1] == 3):
+                        op = semantica.pilaOperadores.pop()
+                        opD = semantica.pilaVariables.pop()
+                        opI = semantica.pilaVariables.pop()
+                        TD  = semantica.pilaTipos.pop()
+                        TI  = semantica.pilaTipos.pop()
+                        try:
+                            semantica.addCuadruplo(op,opI,opD,TI,TD)
+                        except MemoryError() as e:
+                            print(e)
+                            sys.exit()
+                        except ValueError as e2:
+                            print(e)
+                            sys.exit()
+
+                self.state = 227
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1678,19 +1746,19 @@ class Grammar_duckParser ( Parser ):
         localctx = Grammar_duckParser.Mult_divContext(self, self._ctx, self.state)
         self.enterRule(localctx, 44, self.RULE_mult_div)
         try:
-            self.state = 223
+            self.state = 232
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [22]:
+            if token in [23]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 219
-                self.match(Grammar_duckParser.T__21)
+                self.state = 228
+                self.match(Grammar_duckParser.T__22)
                 semantica.addPilaOp(2);
                 pass
-            elif token in [23]:
+            elif token in [24]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 221
-                self.match(Grammar_duckParser.T__22)
+                self.state = 230
+                self.match(Grammar_duckParser.T__23)
                 semantica.addPilaOp(3)
                 pass
             else:
@@ -1743,29 +1811,29 @@ class Grammar_duckParser ( Parser ):
         localctx = Grammar_duckParser.FactorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 46, self.RULE_factor)
         try:
-            self.state = 236
+            self.state = 245
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [24]:
+            if token in [15]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 225
-                self.match(Grammar_duckParser.T__23)
+                self.state = 234
+                self.match(Grammar_duckParser.T__14)
 
                 semantica.addPilaOp(-1) # meter barrera
 
-                self.state = 227
+                self.state = 236
                 self.expresion()
-                self.state = 228
+                self.state = 237
                 self.match(Grammar_duckParser.T__10)
 
                 semantica.pilaOperadores.pop() # sacar barrera
 
                 pass
-            elif token in [20, 21]:
+            elif token in [21, 22]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 231
+                self.state = 240
                 self.positivo_negativo()
-                self.state = 232
+                self.state = 241
                 self.id_cte()
 
                 op  = semantica.pilaOperadores.pop() # tiene que ser un *
@@ -1785,7 +1853,7 @@ class Grammar_duckParser ( Parser ):
                 pass
             elif token in [30, 31, 32]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 235
+                self.state = 244
                 self.id_cte()
                 pass
             else:
@@ -1827,19 +1895,19 @@ class Grammar_duckParser ( Parser ):
         localctx = Grammar_duckParser.Positivo_negativoContext(self, self._ctx, self.state)
         self.enterRule(localctx, 48, self.RULE_positivo_negativo)
         try:
-            self.state = 242
+            self.state = 251
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [20]:
+            if token in [21]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 238
-                self.match(Grammar_duckParser.T__19)
+                self.state = 247
+                self.match(Grammar_duckParser.T__20)
                 #semantica.convertirMenos = False
                 pass
-            elif token in [21]:
+            elif token in [22]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 240
-                self.match(Grammar_duckParser.T__20)
+                self.state = 249
+                self.match(Grammar_duckParser.T__21)
 
                 #semantica.convertirMenos = True
                 semantica.addCTE(-1,"int") # agregamos -1 si no existe
@@ -1893,12 +1961,12 @@ class Grammar_duckParser ( Parser ):
         localctx = Grammar_duckParser.Id_cteContext(self, self._ctx, self.state)
         self.enterRule(localctx, 50, self.RULE_id_cte)
         try:
-            self.state = 247
+            self.state = 256
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [30]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 244
+                self.state = 253
                 localctx._ID = self.match(Grammar_duckParser.ID)
 
                 try:
@@ -1910,7 +1978,7 @@ class Grammar_duckParser ( Parser ):
                 pass
             elif token in [31, 32]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 246
+                self.state = 255
                 self.cte()
                 pass
             else:
@@ -1959,12 +2027,12 @@ class Grammar_duckParser ( Parser ):
         localctx = Grammar_duckParser.CteContext(self, self._ctx, self.state)
         self.enterRule(localctx, 52, self.RULE_cte)
         try:
-            self.state = 253
+            self.state = 262
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [31]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 249
+                self.state = 258
                 localctx._CTE_INT = self.match(Grammar_duckParser.CTE_INT)
 
                 semantica.addCTE((None if localctx._CTE_INT is None else localctx._CTE_INT.text), 'int')
@@ -1977,7 +2045,7 @@ class Grammar_duckParser ( Parser ):
                 pass
             elif token in [32]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 251
+                self.state = 260
                 localctx._CTE_FLOAT = self.match(Grammar_duckParser.CTE_FLOAT)
 
                 semantica.addCTE((None if localctx._CTE_FLOAT is None else localctx._CTE_FLOAT.text), 'float')
@@ -2043,10 +2111,10 @@ class Grammar_duckParser ( Parser ):
         self.enterRule(localctx, 54, self.RULE_funcs)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 255
+            self.state = 264
             self.match(Grammar_duckParser.T__24)
             semantica.currType = 'void'
-            self.state = 257
+            self.state = 266
             localctx._ID = self.match(Grammar_duckParser.ID)
             try: 
                 semantica.addFunc((None if localctx._ID is None else localctx._ID.text), semantica.currType) 
@@ -2055,21 +2123,21 @@ class Grammar_duckParser ( Parser ):
                 print(e)
                 sys.exit()
 
-            self.state = 259
-            self.match(Grammar_duckParser.T__23)
-            self.state = 260
+            self.state = 268
+            self.match(Grammar_duckParser.T__14)
+            self.state = 269
             self.params()
-            self.state = 261
+            self.state = 270
             self.match(Grammar_duckParser.T__10)
-            self.state = 262
+            self.state = 271
             self.match(Grammar_duckParser.T__25)
-            self.state = 263
+            self.state = 272
             self.var_no_var()
-            self.state = 264
+            self.state = 273
             self.body()
-            self.state = 265
+            self.state = 274
             self.match(Grammar_duckParser.T__26)
-            self.state = 266
+            self.state = 275
             self.match(Grammar_duckParser.T__1)
             semantica.delDV(semantica.currFunc)
         except RecognitionException as re:
@@ -2113,11 +2181,11 @@ class Grammar_duckParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 270
+            self.state = 279
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==30:
-                self.state = 269
+                self.state = 278
                 self.list_params()
 
 
@@ -2170,12 +2238,12 @@ class Grammar_duckParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 272
+            self.state = 281
             localctx._ID = self.match(Grammar_duckParser.ID)
             semantica.currID = (None if localctx._ID is None else localctx._ID.text)
-            self.state = 274
+            self.state = 283
             self.match(Grammar_duckParser.T__5)
-            self.state = 275
+            self.state = 284
             localctx._TYPE = self.match(Grammar_duckParser.TYPE)
 
             try: 
@@ -2184,13 +2252,13 @@ class Grammar_duckParser ( Parser ):
                 print(e)
                 sys.exit()
 
-            self.state = 280
+            self.state = 289
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==7:
-                self.state = 278
+                self.state = 287
                 self.match(Grammar_duckParser.T__6)
-                self.state = 279
+                self.state = 288
                 self.list_params()
 
 
@@ -2234,7 +2302,7 @@ class Grammar_duckParser ( Parser ):
         self.enterRule(localctx, 60, self.RULE_var_no_var)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 282
+            self.state = 291
             self.vars_()
         except RecognitionException as re:
             localctx.exception = re
@@ -2279,15 +2347,15 @@ class Grammar_duckParser ( Parser ):
         self.enterRule(localctx, 62, self.RULE_f_call)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 284
+            self.state = 293
             self.match(Grammar_duckParser.ID)
-            self.state = 285
-            self.match(Grammar_duckParser.T__23)
-            self.state = 286
+            self.state = 294
+            self.match(Grammar_duckParser.T__14)
+            self.state = 295
             self.f_list_expresion()
-            self.state = 287
+            self.state = 296
             self.match(Grammar_duckParser.T__10)
-            self.state = 288
+            self.state = 297
             self.match(Grammar_duckParser.T__1)
         except RecognitionException as re:
             localctx.exception = re
@@ -2334,13 +2402,13 @@ class Grammar_duckParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 293
+            self.state = 302
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 7536115712) != 0):
-                self.state = 290
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 7522516992) != 0):
+                self.state = 299
                 self.expresion()
-                self.state = 291
+                self.state = 300
                 self.f_more_expresion()
 
 
@@ -2389,15 +2457,15 @@ class Grammar_duckParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 299
+            self.state = 308
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==7:
-                self.state = 295
+                self.state = 304
                 self.match(Grammar_duckParser.T__6)
-                self.state = 296
+                self.state = 305
                 self.expresion()
-                self.state = 297
+                self.state = 306
                 self.f_more_expresion()
 
 

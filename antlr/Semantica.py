@@ -181,9 +181,8 @@ class Semantica:
         # print -> 11
         self.pilaOperadores.append(op)
     
-    def addCuadruplo(self, op, OpI, OpD, TI = None, TD = None):
+    def addCuadruplo(self, op, OpI = None, OpD = None, TI = None, TD = None):
         # revisar que tipo me da haciendo uso de mi cuadro semantico
-
         if (op == 7): # cuadruplo de asignación.
             cuadruplo = [op, OpD,None,OpI]
         elif op in [0,1,2,3,4,5,6] : # operaciones que generan un resultado temporal
@@ -207,7 +206,13 @@ class Semantica:
             cuadruplo = [op,OpI,OpD, temp]
             self.pilaVariables.append(temp)
             self.pilaTipos.append(tipoT)
-            self.currCuadruplo += 1 # el siguiente cuadruplo estara en curr + 1
+        elif op in [8,9,10]: # cuadruplo GOTO, 8 GOTO, 9 F, 10 T
+            # no se crea memoria temporal para un GOTO
+            cuadruplo = [op,OpI,None,OpD] 
+            # (GoToT,OpI,,OpD) OpI = comparacion, OpD = indice de salto
+            # (GoToF,OpI,,OpD)
+            # (GoTo,,,OpD)     en GoTo salto directo por lo que OpI = None
+        self.currCuadruplo += 1 # el siguiente cuadruplo estara en curr + 1
         self.cuadruplos.append(cuadruplo) # guardamos cuadruplo
     
     def addCTE(self, cte, type, func = None): # para agregar constantes
@@ -239,4 +244,7 @@ class Semantica:
         if func == None:
             func = self.currFunc
         return self.dirFunc[func][1][id][1]
+    
+    def setGoTo(self, i, salto): # i = indice del cuadruplo, a donde debe saltar
+        self.cuadruplos[i][3] = salto
     

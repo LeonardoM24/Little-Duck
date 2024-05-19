@@ -3,6 +3,10 @@ program Test_s1 ;
 var x,c : int ; J : float;
 
 main{
-    J = x*x+1 + (4-(-1));
+    x = 3;
+    c = 2;
+    do{
+        x = c + x;
+    }while(x > J);
 }
 end

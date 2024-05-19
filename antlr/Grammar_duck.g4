@@ -92,12 +92,61 @@ except ValueError as e2:
 ///////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
-cycle : 'do' body 'while' expresion ';';
+cycle : 'do'{
+indice = semantica.currCuadruplo
+semantica.pilaSaltos.append(indice)
+} body 'while' '(' expresion ')' ';'{
+indice      = semantica.pilaSaltos.pop() # a donde tenemos que saltar
+comparacion = semantica.pilaVariables.pop() # la exprecion que estamos comparando
+tipo = semantica.pilaTipos.pop() # sacamos el tipo de la pila de tipos
+op = 10 # goToTrue
+try:
+    semantica.addCuadruplo(op,comparacion,indice)
+except MemoryError() as e:
+    print(e)
+    sys.exit()
+except ValueError as e2:
+    print(e)
+    sys.exit()
+};
 ///////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
-condition : 'if' expresion body else';';
-else      : ('else' body)?;
+condition : 'if' {
+indice = semantica
+semantica.pilaSaltos.append(indice)
+comparacion = semantica.pilaVariables.pop() # la exprecion que estamos comparando
+tipo = semantica.pilaTipos.pop() # sacamos el tipo de la pila de tipos
+op = 9 # GoToFalse
+try:
+    semantica.addCuadruplo(op,comparacion,indice)
+except MemoryError() as e:
+    print(e)
+    sys.exit()
+except ValueError as e2:
+    print(e)
+    sys.exit()
+} '(' expresion ')' body else';' {
+indice = semantica.pilaSaltos.pop() # a donde tenemos que regrear para editar
+semantica.setGoTo(indice, semantica.currCuadruplo)
+};
+
+else      : ('else' {
+temp = semantica.pilaSaltos.pop() # indice del if
+indice = semantica.currCuadruplo # cuadruplo actual
+semantica.pilaSaltos.append(indice)
+op = 8 # GoTo
+try:
+    semantica.addCuadruplo(op)
+except MemoryError() as e:
+    print(e)
+    sys.exit()
+except ValueError as e2:
+    print(e)
+    sys.exit()
+indice = semantica.currCuadruplo # debio cambiar ya que agregamos el GoTo
+semantica.setGoTo(temp,indice) # ponemos a donde debe saltar el if si es falso
+} body)?;
 ///////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
@@ -126,35 +175,37 @@ comparacion  :
 
 ///////////////////////////////////////////////////////////
 exp : termino{
-if semantica.pilaOperadores[-1] == 0 or semantica.pilaOperadores[-1] == 1:
-    op = semantica.pilaOperadores.pop()
-    opD = semantica.pilaVariables.pop()
-    opI = semantica.pilaVariables.pop()
-    TD = semantica.pilaTipos.pop()
-    TI = semantica.pilaTipos.pop()
-    try:
-        semantica.addCuadruplo(op,opI,opD,TI,TD)
-    except MemoryError() as e:
-        print(e)
-        sys.exit()
-    except VelueError() as e2:
-        print(e2)
-        sys.exit()
+if semantica.pilaOperadores : # revisar que no este vacio
+    if (semantica.pilaOperadores[-1] == 0) or (semantica.pilaOperadores[-1] == 1):
+        op = semantica.pilaOperadores.pop()
+        opD = semantica.pilaVariables.pop()
+        opI = semantica.pilaVariables.pop()
+        TD = semantica.pilaTipos.pop()
+        TI = semantica.pilaTipos.pop()
+        try:
+            semantica.addCuadruplo(op,opI,opD,TI,TD)
+        except MemoryError() as e:
+            print(e)
+            sys.exit()
+        except VelueError() as e2:
+            print(e2)
+            sys.exit()
 } (sum_rest termino{
-if semantica.pilaOperadores[-1] == 0 or semantica.pilaOperadores[-1] == 1:
-    op = semantica.pilaOperadores.pop()
-    opD = semantica.pilaVariables.pop()
-    opI = semantica.pilaVariables.pop()
-    TD = semantica.pilaTipos.pop()
-    TI = semantica.pilaTipos.pop()
-    try:
-        semantica.addCuadruplo(op,opI,opD,TI,TD)
-    except MemoryError() as e:
-        print(e)
-        sys.exit()
-    except VelueError() as e2:
-        print(e2)
-        sys.exit()
+if semantica.pilaOperadores : # revisar que no este vacio
+    if (semantica.pilaOperadores[-1] == 0) or (semantica.pilaOperadores[-1]) == 1:
+        op = semantica.pilaOperadores.pop()
+        opD = semantica.pilaVariables.pop()
+        opI = semantica.pilaVariables.pop()
+        TD = semantica.pilaTipos.pop()
+        TI = semantica.pilaTipos.pop()
+        try:
+            semantica.addCuadruplo(op,opI,opD,TI,TD)
+        except MemoryError() as e:
+            print(e)
+            sys.exit()
+        except VelueError() as e2:
+            print(e2)
+            sys.exit()
 })*;
 sum_rest      : 
 '+' {semantica.addPilaOp(0)}
@@ -165,35 +216,37 @@ x : factor (mult_div factor)*;
 
 ///////////////////////////////////////////////////////////
 termino : factor{
-if (semantica.pilaOperadores[-1] == 2) or (semantica.pilaOperadores[-1] == 3):
-    op = semantica.pilaOperadores.pop()
-    opD = semantica.pilaVariables.pop()
-    opI = semantica.pilaVariables.pop()
-    TD  = semantica.pilaTipos.pop()
-    TI  = semantica.pilaTipos.pop()
-    try:
-        semantica.addCuadruplo(op,opI,opD,TI,TD)
-    except MemoryError() as e:
-        print(e)
-        sys.exit()
-    except ValueError as e2:
-        print(e)
-        sys.exit()
+if semantica.pilaOperadores : # revisar que no este vacio
+    if (semantica.pilaOperadores[-1] == 2) or (semantica.pilaOperadores[-1] == 3):
+        op = semantica.pilaOperadores.pop()
+        opD = semantica.pilaVariables.pop()
+        opI = semantica.pilaVariables.pop()
+        TD  = semantica.pilaTipos.pop()
+        TI  = semantica.pilaTipos.pop()
+        try:
+            semantica.addCuadruplo(op,opI,opD,TI,TD)
+        except MemoryError() as e:
+            print(e)
+            sys.exit()
+        except ValueError as e2:
+            print(e)
+            sys.exit()
 } (mult_div factor{
-if (semantica.pilaOperadores[-1] == 2) or (semantica.pilaOperadores[-1] == 3):
-    op = semantica.pilaOperadores.pop()
-    opD = semantica.pilaVariables.pop()
-    opI = semantica.pilaVariables.pop()
-    TD  = semantica.pilaTipos.pop()
-    TI  = semantica.pilaTipos.pop()
-    try:
-        semantica.addCuadruplo(op,opI,opD,TI,TD)
-    except MemoryError() as e:
-        print(e)
-        sys.exit()
-    except ValueError as e2:
-        print(e)
-        sys.exit()
+if semantica.pilaOperadores : # revisar que no este vacio
+    if (semantica.pilaOperadores[-1] == 2) or (semantica.pilaOperadores[-1] == 3):
+        op = semantica.pilaOperadores.pop()
+        opD = semantica.pilaVariables.pop()
+        opI = semantica.pilaVariables.pop()
+        TD  = semantica.pilaTipos.pop()
+        TI  = semantica.pilaTipos.pop()
+        try:
+            semantica.addCuadruplo(op,opI,opD,TI,TD)
+        except MemoryError() as e:
+            print(e)
+            sys.exit()
+        except ValueError as e2:
+            print(e)
+            sys.exit()
 })*;
 mult_div    : 
 '*' {semantica.addPilaOp(2);}
