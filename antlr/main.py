@@ -4,7 +4,7 @@
 # antlr4 y la gramatica
 from antlr4 import *
 from Grammar_duckLexer import Grammar_duckLexer
-from Grammar_duckParser import Grammar_duckParser
+from Grammar_duckParser import Grammar_duckParser, semantica
 
 
 
@@ -45,4 +45,6 @@ if __name__ == '__main__': # programa main
 
         tree = parser.prog()
         
+        print(semantica.cuadruplos)
+
         #print(tree.toStringTree(recog=parser))

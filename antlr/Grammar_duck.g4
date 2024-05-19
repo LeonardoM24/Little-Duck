@@ -24,7 +24,6 @@ except ValueError as e:
     print(e)
     sys.exit()} 
         ';' vars a_funcs 'main' body 'end' 
-        {print(semantica.cuadruplos)} 
         {del semantica} EOF;
 
 
@@ -112,8 +111,9 @@ except ValueError as e2:
 ///////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
-condition : 'if' {
-indice = semantica
+condition : 'if' '(' expresion ')' 
+{
+indice = semantica.currCuadruplo
 semantica.pilaSaltos.append(indice)
 comparacion = semantica.pilaVariables.pop() # la exprecion que estamos comparando
 tipo = semantica.pilaTipos.pop() # sacamos el tipo de la pila de tipos
@@ -126,7 +126,7 @@ except MemoryError() as e:
 except ValueError as e2:
     print(e)
     sys.exit()
-} '(' expresion ')' body else';' {
+}body else';' {
 indice = semantica.pilaSaltos.pop() # a donde tenemos que regrear para editar
 semantica.setGoTo(indice, semantica.currCuadruplo)
 };
@@ -144,7 +144,7 @@ except MemoryError() as e:
 except ValueError as e2:
     print(e)
     sys.exit()
-indice = semantica.currCuadruplo # debio cambiar ya que agregamos el GoTo
+indice = semantica.currCuadruplo # indice cambio ya que agregamos el GoTo
 semantica.setGoTo(temp,indice) # ponemos a donde debe saltar el if si es falso
 } body)?;
 ///////////////////////////////////////////////////////////
