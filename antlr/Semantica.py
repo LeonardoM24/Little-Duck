@@ -47,14 +47,13 @@ class Semantica:
         # ==========direcciones de memoria ===========
         self.rangoMGlobalI = 6499; self.rangoMGlobalF = 12999  # valor maximo variable global
         self.rangoMLocalI  = 15999; self.rangoMLocalF = 18999 # valor maximo variable local
-        self.rangoMTempI   = 30999; self.rangoMTempF = 30999 # valor maximo variable temporal
-        self.rangoMCteI    = 36999; self.rangoMCteF = 42999; self.rangoMCteS = 48999 # valor maximo para constantes
+        self.rangoMTempI   = 32499; self.rangoMTempF = 45999 # valor maximo variable temporal
+        self.rangoMCteI    = 55999; self.rangoMCteF = 65999; self.rangoMCteS = 75999 # valor maximo para constantes
 
         self.currMGlobalI = 1000; self.currMGlobalF = 6500
         self.currMLocalI  = 13000; self.currMLocalF = 16000
-        self.currMTempI   = 19000; self.currMTempF = 25000
-        self.currMCteI    = 31000; self.currMCteF = 37000; self.currMCteS = 43000
-
+        self.currMTempI   = 19000; self.currMTempF = 29000
+        self.currMCteI    = 46000; self.currMCteF = 56000; self.currMCteS = 66000
 
         # ==========Pilas, operaciones============
         self.currCuadruplo  = 0 # indice del siguiente cuadruplo
@@ -212,6 +211,8 @@ class Semantica:
             # (GoToT,OpI,,OpD) OpI = comparacion, OpD = indice de salto
             # (GoToF,OpI,,OpD)
             # (GoTo,,,OpD)     en GoTo salto directo por lo que OpI = None
+        elif op == 11: # cuadruplo de string
+            cuadruplo = [op,None,None,OpI]
         self.currCuadruplo += 1 # el siguiente cuadruplo estara en curr + 1
         self.cuadruplos.append(cuadruplo) # guardamos cuadruplo
     
@@ -223,20 +224,27 @@ class Semantica:
             t = 1
         elif type == "float":
             t = 0
+        elif type == "string":
+            t = 2
         
         # checar si ya existe la constante
         if not self.checkCTE(cte, func): # si no existe la cte, la creamos
             # ver si es int o float
             if t == 1: # es int
                 if self.currMCteI > self.rangoMCteI: # checamos si tenemos espacio en memoria
-                    raise ValueError("Run out of memory for constant int variables")
+                    raise ValueError("Run out of memory for constant int ")
                 currMCte = self.currMCteI
                 self.currMCteI += 1   
             elif t == 0: # es float
                 if self.currMCteF > self.rangoMCteF: # checamos si tenemos espacio en memoria
-                    raise ValueError("Run out of memory for constant float variables")
+                    raise ValueError("Run out of memory for constant float ")
                 currMCte = self.currMCteF
                 self.currMCteF += 1
+            elif t == 2:
+                if self.currMCteS > self.rangoMCteS: # checamos si tenemos espacio
+                    raise ValueError("Run out of memory for constant string ")
+                currMCte = self.currMCteS
+                self.currMCteS += 1
             # guardamos en el dir
             self.dirFunc[func][1][cte] = [t,currMCte]
 

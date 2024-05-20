@@ -3,11 +3,6 @@ program Test_s1 ;
 var x,c : int ; J : float;
 
 main{
-    if(x < c){
-        x = 43;
-    }else{
-        x = 3;
-    };
-    c = 4;
+    print("hola", x + c);
 }
 end

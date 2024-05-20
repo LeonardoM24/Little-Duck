@@ -58,10 +58,46 @@ statement   : assign
 ///////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
-print           : 'print(' list_expresion ')' ';' ;
+print           : 'print(' list_expresion ')' ';'{
+semantica.pilaTipos.pop()
+temp = semantica.pilaVariables.pop()
+op = 11
+try:
+    semantica.addCuadruplo(op,temp)
+except MemoryError() as e:
+    print(e)
+    sys.exit()
+except ValueError as e2:
+    print(e)
+    sys.exit()
+} ;
 list_expresion  : exp_o_string
-                | exp_o_string ',' list_expresion;
-exp_o_string    : expresion | CTE_STRING;
+                | exp_o_string ','{
+semantica.pilaTipos.pop()
+temp = semantica.pilaVariables.pop()
+op = 11
+try:
+    semantica.addCuadruplo(op,temp)
+except MemoryError() as e:
+    print(e)
+    sys.exit()
+except ValueError as e2:
+    print(e)
+    sys.exit()
+} list_expresion;
+exp_o_string    : expresion | CTE_STRING {
+cte = $CTE_STRING.text
+try:
+    semantica.addCTE(cte,"string")
+except ValueError as e:
+    print(e)
+    sys.exit()
+try:
+    semantica.addPilaVar(cte)
+except ValueError as e:
+    print(e)
+    sys.exit()
+};
 ///////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
@@ -280,7 +316,12 @@ positivo_negativo:
 '+' {#semantica.convertirMenos = False} 
 | '-' {
 #semantica.convertirMenos = True
-semantica.addCTE(-1,"int") # agregamos -1 si no existe
+
+try:
+    semantica.addCTE(-1,"int") # agregamos -1 si no existe
+except ValueError as e:
+    print(e)
+    sys.exit()
 semantica.addPilaOp(2) # agregamos *
 semantica.addPilaVar(-1) # agregar -1 a pila de variables
 };
@@ -295,7 +336,11 @@ except ValueError as e:
 
 cte: 
 CTE_INT {
-semantica.addCTE($CTE_INT.text, 'int')
+try:
+    semantica.addCTE($CTE_INT.text, 'int')
+except ValueError as e:
+    print(e)
+    sys.exit()
 try:
     semantica.addPilaVar($CTE_INT.text)
 except ValueError as e:
@@ -303,7 +348,11 @@ except ValueError as e:
     sys.exit()
 }
 | CTE_FLOAT {
-semantica.addCTE($CTE_FLOAT.text, 'float')
+try:
+    semantica.addCTE($CTE_FLOAT.text, 'float')
+except ValueError as e:
+    print(e)
+    sys.exit()
 try:
     semantica.addPilaVar($CTE_FLOAT.text)
 except ValueError as e:
