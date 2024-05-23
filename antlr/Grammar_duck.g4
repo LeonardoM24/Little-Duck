@@ -14,8 +14,9 @@ semantica = Semantica()
 ///////////////////////////////////////////////////////////
 prog    : 'program'{global semantica}
 {
-semantica.currType = "program"}
-        ID 
+semantica.currType = "program"
+}
+ID 
 {try:
     semantica.addFunc($ID.text, semantica.currType) 
     semantica.currFunc = $ID.text
@@ -23,8 +24,9 @@ semantica.currType = "program"}
 except ValueError as e: 
     print(e)
     sys.exit()} 
-        ';' vars a_funcs 'main' body 'end' 
-        {del semantica} EOF;
+';' vars a_funcs 'main' body 'end ;' EOF
+{semantica.addCuadruplo(12)}
+{del semantica};
 
 
 a_funcs : (funcs a_funcs)?;
@@ -32,7 +34,8 @@ a_funcs : (funcs a_funcs)?;
 
 ///////////////////////////////////////////////////////////
 vars      : ('var' more_vars)?;
-more_vars : ( {semantica.tempIDS.clear()} list_id ':' (TYPE) 
+more_vars : ( {semantica.tempIDS.clear()} list_id ':' 
+TYPE 
 {
 try:
     semantica.addListVar(semantica.tempIDS,$TYPE.text,semantica.currFunc)
@@ -86,14 +89,14 @@ except ValueError as e2:
     sys.exit()
 } list_expresion;
 exp_o_string    : expresion | CTE_STRING {
-cte = $CTE_STRING.text
+cteT = $CTE_STRING.text
 try:
-    semantica.addCTE(cte,"string")
+    semantica.addCTE(cteT,"string")
 except ValueError as e:
     print(e)
     sys.exit()
 try:
-    semantica.addPilaVar(cte)
+    semantica.addPilaVar(cteT,cte=True,tipo=2)
 except ValueError as e:
     print(e)
     sys.exit()
@@ -248,7 +251,7 @@ sum_rest      :
 | '-' {semantica.addPilaOp(1)};
 ///////////////////////////////////////////////////////////
 
-x : factor (mult_div factor)*;
+//x : factor (mult_div factor)*;
 
 ///////////////////////////////////////////////////////////
 termino : factor{
@@ -313,17 +316,15 @@ except ValueError as e2:
 | id_cte;
 
 positivo_negativo: 
-'+' {#semantica.convertirMenos = False} 
+'+'
 | '-' {
-#semantica.convertirMenos = True
-
 try:
     semantica.addCTE(-1,"int") # agregamos -1 si no existe
 except ValueError as e:
     print(e)
     sys.exit()
 semantica.addPilaOp(2) # agregamos *
-semantica.addPilaVar(-1) # agregar -1 a pila de variables
+semantica.addPilaVar(-1, cte=True, tipo=1) # agregar -1 a pila de variables
 };
 
 id_cte: ID{
@@ -342,7 +343,7 @@ except ValueError as e:
     print(e)
     sys.exit()
 try:
-    semantica.addPilaVar($CTE_INT.text)
+    semantica.addPilaVar($CTE_INT.text, cte = True, tipo = 1)
 except ValueError as e:
     print(e)
     sys.exit()
@@ -354,7 +355,7 @@ except ValueError as e:
     print(e)
     sys.exit()
 try:
-    semantica.addPilaVar($CTE_FLOAT.text)
+    semantica.addPilaVar($CTE_FLOAT.text, cte = True, tipo = 0)
 except ValueError as e:
     print(e)
     sys.exit()
@@ -370,7 +371,7 @@ except ValueError as e:
     print(e)
     sys.exit()
 }
-'(' params ')' '[' var_no_var body ']' ';' {semantica.delDV(semantica.currFunc)};
+'(' params ')' '[' vars body ']' ';' {semantica.delDV(semantica.currFunc)};
 
 params: (list_params)?;
 list_params: (ID {semantica.currID = $ID.text}
@@ -383,7 +384,7 @@ except ValueError as e:
     sys.exit()
 }
 ) (',' list_params)? ;
-var_no_var  : vars;
+
 ///////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////

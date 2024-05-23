@@ -4,7 +4,7 @@ class Semantica:
         # =============================================
         # ==============Cubo semantico=================
         # =============================================
-        # 0 = float, 1 = int
+        # 0 = float, 1 = int, 2 = string
         # 0 = + , 1 = -, 2 = *, 3 = /, 4 = <, 5 = >, 6 = !=, 7 = =
         # ejemplo cubo[0][1][2] = float, int, multiplicacion
         self.tiposTag = ["float", "int", "string"]
@@ -50,19 +50,26 @@ class Semantica:
         self.rangoMTempI   = 32499; self.rangoMTempF = 45999 # valor maximo variable temporal
         self.rangoMCteI    = 55999; self.rangoMCteF = 65999; self.rangoMCteS = 75999 # valor maximo para constantes
 
+        # limite inferior
+        self.minMGlobalI = 1000; self.minMGlobalF = 6500
+        self.minMLocalI  = 13000; self.minMLocalF = 16000
+        self.minMTempI   = 19000; self.minMTempF = 29000
+        self.minMCteI    = 46000; self.minMCteF = 56000; self.currMCteS = 66000
+
+        # contador para asignar memoria
         self.currMGlobalI = 1000; self.currMGlobalF = 6500
         self.currMLocalI  = 13000; self.currMLocalF = 16000
         self.currMTempI   = 19000; self.currMTempF = 29000
         self.currMCteI    = 46000; self.currMCteF = 56000; self.currMCteS = 66000
 
         # ==========Pilas, operaciones============
+        self.dirCTE         = {} # para guardar constante y direccion de memoria 
         self.currCuadruplo  = 0 # indice del siguiente cuadruplo
         self.cuadruplos     = [] # arreglo de cuadruplos
         self.pilaTipos      = [] # pila con los tipos
         self.pilaSaltos     = [] # pila de los saltos
         self.pilaVariables  = [] # pila con las direcciones de memoria de varibles
         self.pilaOperadores = [] # pila con operadores
-        self.convertirMenos = False # en casos como x = -B, se usa para saber que tenemos que convertir B a negativo
 
     
     # checar si la funcion ya existe, true = ya existe, false = nuevo
@@ -72,7 +79,9 @@ class Semantica:
         return False
     
     # checar si la variable ya existe, true = ya existe, false = nuevo
-    def checkVar(self, id, func):
+    def checkVar(self, id, func = None):
+        if func == None:
+            func = self.currFunc
         #checar si existe la funcion
         if not self.checkFunc(func): # no existe la funcion
             return True # la funcion no existe
@@ -81,11 +90,8 @@ class Semantica:
         return False
 
     # checar si una constante ya existe en nuestro dirvar
-    def checkCTE(self, cte, func):
-        #checar si existe la funcion
-        if not self.checkFunc(func): # no existe la funcion
-            return False # la funcion no existe
-        if self.dirFunc[func][1].get(cte) != None: # variable ya existe
+    def checkCTE(self, cte):
+        if self.dirCTE.get(cte) != None:
             return True
         return False
 
@@ -148,22 +154,35 @@ class Semantica:
     def delFunc(self, id):
         self.dirFunc.pop(id) # borrar la funcion (ya no la usamos)
 
-    def addPilaVar(self, id, func = None): # añadir a la pila de variable
+    def addPilaVar(self, id, cte = False , func = None, tipo = None): # añadir a la pila de variable
         if func == None:
             func = self.currFunc
-        if not self.checkVar(id, func): # checar si la variable no existe
-            raise ValueError(f"Variable {id} not decleared")
-        # la variable si existe
-        # sacar la dirección de memoria de esa variable
-        dirM = self.getDireccionMemoria(id,func)
-        tipo = self.getTipo(id,func) # sacamos el tipo
+        
+        if not cte and not self.checkVar(id,func): # la variable ya existe
+            raise ValueError(f"variable {id} not declared")
+
+        # sacar la dirección de memoria de esa variable  
+        dirM = self.getDireccionMemoria(id,cte,func)
+        if tipo == None:
+            tipo = self.getTipo(id,cte,func) # sacamos el tipo
         self.pilaVariables.append(dirM) # lo ponemos a la pila de var
         self.pilaTipos.append(tipo) # ponemos el tipo
     
-    def getTipo(self, id, func = None):
+    def getTipo(self, id, cte = False,func = None):
         if func == None:
             func = self.currFunc
-        return self.dirFunc[func][1][id][0]
+        
+        if not cte: # variable
+            tipo = self.dirFunc[func][1][id][0]
+        else: # es una constante
+            m = self.getDireccionMemoria(id, cte=True)
+            if m in range(self.minMCteI, self.rangoMCteI + 1): # es entero
+                tipo = 1
+            elif m in range(self.minMCteF, self.rangoMCteF + 1):
+                tipo = 0
+            else: # m in rantge(self.minMCteS, self.rangeMCteS + 1): # string
+                tipo = 2
+        return tipo
 
     def addPilaOp(self, op):
         # +  --> 0
@@ -181,12 +200,18 @@ class Semantica:
         self.pilaOperadores.append(op)
     
     def addCuadruplo(self, op, OpI = None, OpD = None, TI = None, TD = None):
+
+        if(op == 12): # EOF
+            cuadruplo = [op,None,None,None]
+            pass
         # revisar que tipo me da haciendo uso de mi cuadro semantico
-        if (op == 7): # cuadruplo de asignación.
+        elif (op == 7): # cuadruplo de asignación.
             cuadruplo = [op, OpD,None,OpI]
         elif op in [0,1,2,3,4,5,6] : # operaciones que generan un resultado temporal
+            
             # revisar el type del resultado temporal
             tipoT = self.cuboSemantico[TI][TD][op]
+
             if tipoT == -1:
                 raise ValueError(f"mismatch type, cant do {op} to type {self.tiposTag[TI]} and {self.tiposTag[TD]} ")
             if tipoT == 0:   # float
@@ -216,10 +241,8 @@ class Semantica:
         self.currCuadruplo += 1 # el siguiente cuadruplo estara en curr + 1
         self.cuadruplos.append(cuadruplo) # guardamos cuadruplo
     
-    def addCTE(self, cte, type, func = None): # para agregar constantes
-        if func == None:
-            func = self.currFunc
-        
+    def addCTE(self, cte, type): # para agregar constantes
+
         if type == "int":
             t = 1
         elif type == "float":
@@ -228,7 +251,7 @@ class Semantica:
             t = 2
         
         # checar si ya existe la constante
-        if not self.checkCTE(cte, func): # si no existe la cte, la creamos
+        if not self.checkCTE(cte): # si no existe la cte, la creamos
             # ver si es int o float
             if t == 1: # es int
                 if self.currMCteI > self.rangoMCteI: # checamos si tenemos espacio en memoria
@@ -246,12 +269,17 @@ class Semantica:
                 currMCte = self.currMCteS
                 self.currMCteS += 1
             # guardamos en el dir
-            self.dirFunc[func][1][cte] = [t,currMCte]
+            self.dirCTE[cte] = currMCte
 
-    def getDireccionMemoria(self,id,func = None):
+    def getDireccionMemoria(self,id, cte, func = None):
         if func == None:
             func = self.currFunc
-        return self.dirFunc[func][1][id][1]
+        
+        if not cte: # es una variable
+            dirM = self.dirFunc[func][1][id][1]
+        else: # es una constante
+            dirM = self.dirCTE[id]
+        return dirM
     
     def setGoTo(self, i, salto): # i = indice del cuadruplo, a donde debe saltar
         self.cuadruplos[i][3] = salto

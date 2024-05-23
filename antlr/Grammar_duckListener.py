@@ -195,15 +195,6 @@ class Grammar_duckListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by Grammar_duckParser#x.
-    def enterX(self, ctx:Grammar_duckParser.XContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#x.
-    def exitX(self, ctx:Grammar_duckParser.XContext):
-        pass
-
-
     # Enter a parse tree produced by Grammar_duckParser#termino.
     def enterTermino(self, ctx:Grammar_duckParser.TerminoContext):
         pass
@@ -282,15 +273,6 @@ class Grammar_duckListener(ParseTreeListener):
 
     # Exit a parse tree produced by Grammar_duckParser#list_params.
     def exitList_params(self, ctx:Grammar_duckParser.List_paramsContext):
-        pass
-
-
-    # Enter a parse tree produced by Grammar_duckParser#var_no_var.
-    def enterVar_no_var(self, ctx:Grammar_duckParser.Var_no_varContext):
-        pass
-
-    # Exit a parse tree produced by Grammar_duckParser#var_no_var.
-    def exitVar_no_var(self, ctx:Grammar_duckParser.Var_no_varContext):
         pass
 
 

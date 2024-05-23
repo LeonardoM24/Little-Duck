@@ -46,5 +46,6 @@ if __name__ == '__main__': # programa main
         tree = parser.prog()
         
         print(semantica.cuadruplos)
+        print(semantica.dirCTE)
 
         #print(tree.toStringTree(recog=parser))
