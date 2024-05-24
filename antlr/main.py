@@ -6,6 +6,18 @@ from antlr4 import *
 from Grammar_duckLexer import Grammar_duckLexer
 from Grammar_duckParser import Grammar_duckParser, semantica
 
+from antlr4.error.ErrorListener import ErrorListener
+from antlr4.error.ErrorStrategy import DefaultErrorStrategy, BailErrorStrategy
+from antlr4.error.Errors import ParseCancellationException
+
+from Maquina import MaquinaVirtual as VM 
+
+
+class MyErrorListener(ErrorListener):
+    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
+        print(f"Syntax error at line {line}, column {column}: {msg}")
+        raise ParseCancellationException(f"Syntax error at line {line}, column {column}: {msg}")
+
 
 
 # Funcion para leer el archivo
@@ -43,9 +55,26 @@ if __name__ == '__main__': # programa main
         stream = CommonTokenStream(lexer) # pasamos el resultado del lexer al stream
         parser = Grammar_duckParser(stream) # pasamos el stram al parser
 
-        tree = parser.prog()
-        
-        print(semantica.cuadruplos)
-        print(semantica.dirCTE)
 
-        #print(tree.toStringTree(recog=parser))
+
+        # Agrega tu ErrorListener personalizado al parser
+        parser.removeErrorListeners() # Elimina los listeners de error predeterminados
+        parser.addErrorListener(MyErrorListener()) # Agrega tu listener personalizado
+
+        try:
+            tree = parser.prog()
+            #print(semantica.cuadruplos)
+            #print(semantica.dirCTE)
+            #print(tree.toStringTree(recog=parser))
+        except ParseCancellationException as e:
+            print("Se encontró un error sintáctico y se detuvo la ejecución.")
+        
+
+        # Creamos la maquina virtual
+
+        mv = VM()
+
+        mv.run(semantica.cuadruplos,semantica.dirCTE)
+
+        
+

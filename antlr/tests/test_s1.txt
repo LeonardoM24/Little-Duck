@@ -3,9 +3,8 @@ program Test_s1 ;
 var x,c : int ; J : float;
 
 main{
-
+    
     x = 0;
-
     do{
         if(x < 5){
             print('menor a 5: ', x);
@@ -15,6 +14,5 @@ main{
         x = x + 1;
     }
     while(x < 10);
-
 }
-end
+end;

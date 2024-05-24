@@ -214,7 +214,7 @@ class Semantica:
 
             if tipoT == -1:
                 raise ValueError(f"mismatch type, cant do {op} to type {self.tiposTag[TI]} and {self.tiposTag[TD]} ")
-            if tipoT == 0:   # float
+            elif tipoT == 0:   # float
                 # revisar si hay espacio en memoria temporal
                 if self.currMLocalF > self.rangoMTempF:
                     raise MemoryError(f"Out of temp memory")
@@ -236,7 +236,7 @@ class Semantica:
             # (GoToT,OpI,,OpD) OpI = comparacion, OpD = indice de salto
             # (GoToF,OpI,,OpD)
             # (GoTo,,,OpD)     en GoTo salto directo por lo que OpI = None
-        elif op == 11: # cuadruplo de string
+        elif op == 11: # cuadruplo de print
             cuadruplo = [op,None,None,OpI]
         self.currCuadruplo += 1 # el siguiente cuadruplo estara en curr + 1
         self.cuadruplos.append(cuadruplo) # guardamos cuadruplo
@@ -263,7 +263,8 @@ class Semantica:
                     raise ValueError("Run out of memory for constant float ")
                 currMCte = self.currMCteF
                 self.currMCteF += 1
-            elif t == 2:
+            elif t == 2: # string
+                
                 if self.currMCteS > self.rangoMCteS: # checamos si tenemos espacio
                     raise ValueError("Run out of memory for constant string ")
                 currMCte = self.currMCteS

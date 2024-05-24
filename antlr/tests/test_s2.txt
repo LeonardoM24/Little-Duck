@@ -2,16 +2,10 @@ program macias;
 var A, B: float; C, D: int;
 main
 {
-    B = C + 2.9;
-    A = 2;
-    print("Hola", A);
-    if (B > 2) {
-        do {
-            D = 2 / -3 * (B - -2);
-            A = C / D + (B * A);
-        } while (A + (C / B) != C);
-    } else {
-        A = A - B;
-    };
+    A = 3.5;
+    B = 2.2;
+    C = 1;
+
+    print("hola",'como, estan');
 }
-end
+end;

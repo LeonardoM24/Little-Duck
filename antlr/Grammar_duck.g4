@@ -24,7 +24,7 @@ ID
 except ValueError as e: 
     print(e)
     sys.exit()} 
-';' vars a_funcs 'main' body 'end ;' EOF
+';' vars a_funcs 'main' body 'end' ';' EOF
 {semantica.addCuadruplo(12)}
 {del semantica};
 
@@ -90,6 +90,7 @@ except ValueError as e2:
 } list_expresion;
 exp_o_string    : expresion | CTE_STRING {
 cteT = $CTE_STRING.text
+cteT = cteT[1:-1] # quitamos comillas
 try:
     semantica.addCTE(cteT,"string")
 except ValueError as e:
@@ -402,4 +403,4 @@ TYPE       : 'int' | 'float';
 ID         : [a-zA-Z][A-Za-z0-9_]* ;
 CTE_INT    : [0-9]+ ;
 CTE_FLOAT  : [0-9]+'.'[0-9]+ ;
-CTE_STRING : '\'' (~[\n]*) '\'' | '"' (~[\n]*) '"' ;
+CTE_STRING : '\'' (~[\n']*) '\'' | '"' (~[\n"]*) '"' ;
