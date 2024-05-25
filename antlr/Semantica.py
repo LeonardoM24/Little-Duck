@@ -53,13 +53,13 @@ class Semantica:
         # limite inferior
         self.minMGlobalI = 1000; self.minMGlobalF = 6500
         self.minMLocalI  = 13000; self.minMLocalF = 16000
-        self.minMTempI   = 19000; self.minMTempF = 29000
+        self.minMTempI   = 19000; self.minMTempF = 32500
         self.minMCteI    = 46000; self.minMCteF = 56000; self.currMCteS = 66000
 
         # contador para asignar memoria
         self.currMGlobalI = 1000; self.currMGlobalF = 6500
         self.currMLocalI  = 13000; self.currMLocalF = 16000
-        self.currMTempI   = 19000; self.currMTempF = 29000
+        self.currMTempI   = 19000; self.currMTempF = 32500
         self.currMCteI    = 46000; self.currMCteF = 56000; self.currMCteS = 66000
 
         # ==========Pilas, operaciones============
@@ -137,7 +137,6 @@ class Semantica:
                 self.dirFunc[func][1][id] = [t, self.currMLocalF]
                 self.currMLocalF += 1 # actualizamos el contador de memoria
 
-    
     def addListVar(self, listIDS, type, func):
         for id in listIDS:
             try:
@@ -151,9 +150,6 @@ class Semantica:
     def delDV(self, func): # borrar/limpiar del directorio de variables de la funcion
         self.dirFunc[func][1] = {}
     
-    def delFunc(self, id):
-        self.dirFunc.pop(id) # borrar la funcion (ya no la usamos)
-
     def addPilaVar(self, id, cte = False , func = None, tipo = None): # añadir a la pila de variable
         if func == None:
             func = self.currFunc

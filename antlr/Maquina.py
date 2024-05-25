@@ -137,6 +137,8 @@ class MaquinaVirtual:
             DopI = self.cuadruplos[IP][1] # direccion operando izquierdo
             DopD = self.cuadruplos[IP][2] # direccion operando derecho
             DR   = self.cuadruplos[IP][3] # direccion resultado
+            
+            #print(f"cuadruplo: {op}, {DopI}, {DopD}, {DR}")
 
             # Switch para ver que operacion se realizara
             if   op ==  0: # SUMA
@@ -192,7 +194,7 @@ class MaquinaVirtual:
                     IP = DR - 1 # el -1 es porque por defecto al final del switch hacemos un + 1
             elif op == 11: # print
                 var = self.getValue(DR)
-                print(var,end=' ')
+                print(var)
             elif op == 12: # EOF, end of file (termino)
                 pass
             IP += 1

@@ -1,0 +1,8 @@
+program ft5;
+var x : int; c : float;
+main{
+    x = 1;
+    c = 2.3;
+    z = 2;
+}
+end;

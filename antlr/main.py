@@ -15,7 +15,6 @@ from Maquina import MaquinaVirtual as VM
 
 class MyErrorListener(ErrorListener):
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        print(f"Syntax error at line {line}, column {column}: {msg}")
         raise ParseCancellationException(f"Syntax error at line {line}, column {column}: {msg}")
 
 
@@ -54,27 +53,20 @@ if __name__ == '__main__': # programa main
         lexer = Grammar_duckLexer(InputStream(content)) # pasamos el doc por el lexer
         stream = CommonTokenStream(lexer) # pasamos el resultado del lexer al stream
         parser = Grammar_duckParser(stream) # pasamos el stram al parser
-
-
-
         # Agrega tu ErrorListener personalizado al parser
         parser.removeErrorListeners() # Elimina los listeners de error predeterminados
         parser.addErrorListener(MyErrorListener()) # Agrega tu listener personalizado
-
         try:
             tree = parser.prog()
             #print(semantica.cuadruplos)
             #print(semantica.dirCTE)
             #print(tree.toStringTree(recog=parser))
+                    # Creamos la maquina virtual
+            mv = VM()
+            mv.run(semantica.cuadruplos,semantica.dirCTE)
         except ParseCancellationException as e:
-            print("Se encontró un error sintáctico y se detuvo la ejecución.")
-        
+            print(e)
 
-        # Creamos la maquina virtual
-
-        mv = VM()
-
-        mv.run(semantica.cuadruplos,semantica.dirCTE)
 
         
 

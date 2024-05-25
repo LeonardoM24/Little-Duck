@@ -1,0 +1,9 @@
+program ft4;
+var x : int; c : float;
+main{
+    x = 1;
+    c = 2.3;
+    print(c + x)
+    print('hahaha');
+}
+end;

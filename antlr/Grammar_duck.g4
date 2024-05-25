@@ -166,7 +166,8 @@ except MemoryError() as e:
 except ValueError as e2:
     print(e)
     sys.exit()
-}body else';' {
+}
+body else ';'{
 indice = semantica.pilaSaltos.pop() # a donde tenemos que regrear para editar
 semantica.setGoTo(indice, semantica.currCuadruplo)
 };
@@ -389,7 +390,12 @@ except ValueError as e:
 ///////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
-f_call           : ID '(' f_list_expresion ')' ';';
+f_call           : ID {
+if not semantica.checkFunc($ID.text):
+    # error de funcion no existe
+    print(f"function {$ID.text} dosent exist")
+
+} '(' f_list_expresion ')' ';';
 f_list_expresion : (expresion f_more_expresion)?;
 f_more_expresion : (',' expresion f_more_expresion)?;
 ///////////////////////////////////////////////////////////
